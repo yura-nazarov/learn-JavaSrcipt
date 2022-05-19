@@ -21,6 +21,7 @@ let out17 = document.querySelector('.out-17');
 let out18 = document.querySelector('.out-18');
 let out19 = document.querySelector('.out-19');
 let out20 = document.querySelector('.out-20');
+let out21 = document.querySelector('.out-21');
 
 let out = '';
 
@@ -403,3 +404,36 @@ function f20() {
 }
 
 document.querySelector('.b-20').onclick = f20;
+
+// Task 21
+// Отсортировать массиво от меньшего к большему
+// Вывод в out-21
+
+let ar212 = [4, 5, 1, 7, -8, 9, 0, 12, -323, 3, 1, 2, 4, 5, -34, 5, 7, 5, 5, 5, 6];
+let ar21 = ar212;
+function f21() {
+   let min;
+   let temp = min;
+
+   for (let currentIndex = 0; currentIndex < ar21.length; currentIndex++) {
+      console.log('currentIndex=', currentIndex);
+      min = ar21[currentIndex];
+
+      for (let i = currentIndex; i < ar21.length; i++) {
+         console.log('ar21[' + i + ']=', ar21[i]);
+
+         if (ar21[i] < min) {
+            console.log('Found new min in ar21 ', ar21[i]);
+            min = ar21[i]; console.log('min ', min);
+            temp = ar21[currentIndex]; console.log('temp ', temp);
+            ar21[currentIndex] = ar21[i]; console.log('ar21[currentIndex] ', ar21[currentIndex]);
+            ar21[i] = temp; console.log('old min ar21 ', ar21[i]);
+         }
+
+      }
+   }
+   out21.innerHTML = out;
+   console.log(ar21);
+}
+
+document.querySelector('.b-21').onclick = f21;
