@@ -10,6 +10,8 @@ console.log(a);
 console.log(a.z2);
 
 let k = "y43";
+
+//добавление нового элемента в массив
 a.yyy = 555;
 console.log('a ', a);
 

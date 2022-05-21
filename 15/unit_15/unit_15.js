@@ -123,12 +123,16 @@ document.querySelector('.b-8').onclick = f8;
 
 const f9 = our_set => {
    let out = '';
+   for (let item in our_set) {
+      out += `${item} `;
+   }
    // for (let item of our_set) {
    //    out += `${item} `;
    // }
-   our_set.forEach((item) => {
-      out += `${item} `;
-   });
+
+   // our_set.forEach((item) => {
+   //    out += `${item} `;
+   // });
    return out;
 }
 

@@ -50,9 +50,11 @@ function f3() {
       "mix": "mix"
    };
    let out = '';
-   for (let k in a3) {
-      if (a3[k] == 'hi') out += a3[k] + ' ';
-   }
+   console.log(a3.length);
+   // for (let k in a3) {
+   //    if (a3[k] == 'hi') out += a3[k] + ' ';
+   // }
+
    return out;
 }
 
@@ -126,7 +128,7 @@ function f6(arr) {
    for (let key in arr) {
       out += `${key} : ${arr[key]} <br>`;
    }
-
+   // console.log(out);
    return out;
 
 }
