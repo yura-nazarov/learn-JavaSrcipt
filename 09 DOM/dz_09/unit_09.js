@@ -113,6 +113,7 @@ for (let i = 0; i < div9.length; i++) {
 //let div10 = тут получите все out-10
 
 function f10() {
+   console.log(this);
    this.classList.toggle('bg-10');
 }
 
@@ -120,7 +121,13 @@ let out10 = document.querySelectorAll('.out-10');
 
 for (let i = 0; i < out10.length; i++) {
    out10[i].onclick = f10;
+   console.log(i);
 }
+
+// или так для touch
+// out10.forEach(elem => {
+//    elem.addEventListener("touchstart", f10);
+// })
 
 // а тут цикл, похожий на предыдущее задание
 
