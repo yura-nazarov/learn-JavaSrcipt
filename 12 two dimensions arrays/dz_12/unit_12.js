@@ -241,19 +241,19 @@ function f13() {
             console.log('chetny');
             if ((j % 2) === 0) {
                t[j] = 0;
-               out += t[j] + ' ';
+               out += t[j] + '  ';
             } else {
                t[j] = 1;
-               out += t[j] + ' ';
+               out += t[j] + '  ';
             }
          } else {
             console.log('ne chetny');
             if ((j % 2) === 0) {
                t[j] = 1;
-               out += t[j] + ' ';
+               out += t[j] + '  ';
             } else {
                t[j] = 0;
-               out += t[j] + ' ';
+               out += t[j] + '  ';
             }
          }
       }
