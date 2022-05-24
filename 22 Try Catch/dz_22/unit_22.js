@@ -83,7 +83,9 @@ function t5() {
    let p = document.querySelectorAll('p');
    console.log(p);
    try {
-      p.push(3);
+      p.push(3); // получаем НЕ ИЗМЕНЯЕМЫЙ NodeList. Нужно его перевести в массив
+
+      // Переводим p в массив. И можем добавлять элементы.
       // let arr = Array.from(p);
       // arr.push(3);
       // console.log(arr);
