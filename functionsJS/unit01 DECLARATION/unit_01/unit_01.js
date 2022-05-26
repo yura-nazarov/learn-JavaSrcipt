@@ -90,6 +90,7 @@ function even() {
 
 function t5() {
    let number = +document.querySelector('.i-5').value;
+   // (number % 2) ? odd(): even();
    if (number % 2 === 0) {
       odd();
    } else {
@@ -117,6 +118,7 @@ function t6() {
 
    getRandomInt2();
    let number = +out2.textContent;
+   // (number % 2) ? odd(): even();
    if (number % 2 === 0) {
       odd();
    } else {
@@ -137,6 +139,7 @@ let z7 = 91;
 function t7() {
    if (z7 >= 100) return false;
    z7++;
+   // if (z7 <= 100) z7++;
    out7.textContent = z7;
 }
 
@@ -170,9 +173,16 @@ document.querySelector('.b-8').addEventListener('click', t8);
 
 let z9 = 5;
 const s9 = document.querySelector('.s-9');
+const o9 = s9.querySelectorAll('.o-9');
 
 function t9() {
-   document.querySelector('.s-9').value = z9;
+   s9.value = z9;
+   //or
+   // s9[z9 - 1].selected = true;
+   //or
+   // s9[z9 - 1].selected = 'selected';
+   console.log(o9[4]); //<option class="o-9" value="5">five</option>
+   //[массив из option].find(item => item.text === text)
 }
 
 document.querySelector('.b-9').addEventListener('click', t9);
@@ -193,7 +203,7 @@ function showArr() {
 function t10() {
    ar10_res = []; // очищаем
    ar10.forEach(elem => {
-      if (typeof elem == 'number') ar10_res.push(elem);
+      if (typeof elem === 'number') ar10_res.push(elem);
    })
    showArr();
 }
