@@ -3,38 +3,42 @@ const out1 = document.querySelector('.out-1');
 const out2 = document.querySelector('.out-2');
 const out3 = document.querySelector('.out-3');
 
-function f1(arr, myFunc, block) {
-    arr[3] = arr[3] * 2;
-    // out1.innerHTML = arr1;
-    myFunc(arr, block);
+function f1(arr, myFanc, block) {
+   arr[3] = arr[3] * 2;
+   // out1.innerHTML = arr1;
+   myFanc(arr, block);
 }
 
 function showArr(arr, block) {
-    let out = '';
-    for (let i = 0; i < arr.length; i++) {
-        out += arr[i] + '_';
-    }
-    block.innerHTML = out;
+   let out = '';
+   // for (let i = 0; i < arr.length; i++) {
+   //    out += arr[i] + '_';
+   // }
+   out = arr.join(' ');
+   block.innerHTML = out;
 }
 
 function showArr2(arr, block) {
-    let out = '';
-    for (let i = 0; i < arr.length; i++) {
-        out += arr[i] + '*';
-    }
-    block.innerHTML = out;
+   let out = '';
+   // for (let i = 0; i < arr.length; i++) {
+   //    out += arr[i] + '_';
+   // }
+   out = arr.join('*');
+   block.innerHTML = out;
 }
 
 f1(arr1, showArr, out1);
 f1(arr1, showArr2, out2);
 
+
 // пример коллбека
 
 function squad(item) {
-    return item ** 2;
+   return item ** 2;
 }
 
 // const arr2 = arr1.map(squad);
+// функцию выше переписываем с помощью стрелочной функцией
 const arr2 = arr1.map(item => item ** 2);
 console.log(arr2);
 showArr(arr2, out3);
@@ -42,75 +46,80 @@ showArr(arr2, out3);
 // Пример с input
 
 document.querySelector('.b-4').addEventListener('click', () => {
-    getUserName(fixUserName);
+   getUserName(fixUserName);
 });
 
 function getUserName(fixFunc) {
-    const userName = document.querySelector('.i-4').value;
-    // const userName = prompt('Enter your name: ');
-    console.log(fixFunc(userName));
+   const userName = document.querySelector('.i-4').value;
+   // const userName = prompt('Enter your name: ');
+   console.log(fixFunc(userName));
 }
 
 function fixUserName(str) {
-    return str.trim().toLowerCase();
+   return str.trim().toLowerCase();
 }
 
 // асинхронные callback функции
-
+// example 1
 // async function pageLoader(callback) {
-//     const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
-//     callback(data);
+//    const data = await fetch('https://jsonplaceholder.typicode.com/todos/1');
+//    callback(data);
 // }
 
+// example 2
+// эта функция аналогична предыдущей
 // function pageLoader(callback) {
-//     fetch('https://jsonplaceholder.typicode.com/todos/1')
-//         .then(response => response.json())
-//         .then(json => callback(json));
+//    fetch('https://jsonplaceholder.typicode.com/todos/1')
+//       .then(response => response.json())
+//       .then(json => callback(json));
 // }
-
+// эта функция для example 1 и 2
 // function getAJAX(data) {
-//     console.log('Послал запрос');
-//     console.log('Ответ сервера');
-//     console.log(data);
+//    console.log('Послал запрос');
+//    console.log('Ответ сервера');
+//    console.log(data);
 // }
 
+// эта функция для example 1 и 2
 // pageLoader(getAJAX);
 
-// ад callback
 
+// ад callback
+// example 3
 // function pageLoader() {
-//     fetch('https://jsonplaceholder.typicode.com/todos/1')
-//         .then(response => response.json())
-//         .then(json => {
-//             console.log('Послали запрос на страницу')
-//             console.log('Ответ сервера: ')
-//             console.log(json);
-//             fetch('https://jsonplaceholder.typicode.com/users/' + json.userId)
-//                 .then(response => response.json())
-//                 .then(json => {
-//                 console.log('Послали запрос на страницу')
-//                 console.log('Ответ сервера: ')
-//                 console.log(json)
+//    fetch('https://jsonplaceholder.typicode.com/todos/1')
+//       .then(response => response.json())
+//       .then(json => {
+//          console.log('Послали запрос на страницу')
+//          console.log('Ответ сервера: ')
+//          console.log(json);
+//          fetch('https://jsonplaceholder.typicode.com/users/' + json.userId)
+//             .then(response => response.json())
+//             .then(json => {
+//                console.log('Послали запрос на страницу')
+//                console.log('Ответ сервера: ')
+//                console.log(json)
 //             });
-//         });
+//       });
 // }
 // pageLoader();
 
+// example 4
 function pageLoader(url, callback) {
-    fetch(url)
-        .then(response => response.json())
-        .then(json => callback(json))
+   fetch(url)
+      .then(response => response.json())
+      .then(json => callback(json))
 }
 
 function getAJAX(data) {
-    console.log('Послали запрос на страницу')
-    console.log('Ответ сервера: ')
-    console.log(data);
-    pageLoader('https://jsonplaceholder.typicode.com/users/' + data.userId, showUser);
+   console.log('Послали запрос на страницу')
+   console.log('Ответ сервера: ')
+   console.log(data);
+   pageLoader('https://jsonplaceholder.typicode.com/users/' + data.userId, showUser);
 }
 
-function showUser(user){
-    console.log(user);
+function showUser(user) {
+   console.log(user);
 }
 
 pageLoader('https://jsonplaceholder.typicode.com/todos/1', getAJAX);
