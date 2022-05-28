@@ -317,25 +317,31 @@ document.querySelector('.b-20').addEventListener('click', function () {
 
 function t21(s) {
    let res = t13(10, 20);
-   // if (s == 'even' && !(res % 2)) {
-   //    return res;
-   // }
-   // if (s == 'odd' && (res % 2)) {
-   //    return res;
-   // }
-   // t21(s); // повторный вызов этой же функции, до тех пор пока не удовлетворит условию
-   // or
-   console.log(res);
-   switch (s) {
-      case 'even': return !(res % 2) ? res : ++res;
-         break;
-      case 'odd': return (res % 2) ? res : ++res;
-         break;
+   console.log('res', res);
+   if (s == 'even' && !(res % 2)) {
+      console.log('in if', res);
+      return res;
    }
+   if (s == 'odd' && (res % 2)) {
+      console.log('in if', res);
+      return res;
+   }
+   console.log('before pereat', s);
+   // повторный вызов этой же функции, до тех пор пока не удовлетворит условию
+   t21(s);
+   // or
+   // console.log(res);
+   // switch (s) {
+   //    case 'even': return !(res % 2) ? res : ++res;
+   //       break;
+   //    case 'odd': return (res % 2) ? res : ++res;
+   //       break;
+   // }
 }
 
 document.querySelector('.b-21').addEventListener('click', function () {
-   document.querySelector('.out-21').textContent = 10 + t21('odd') + 20;
+   // document.querySelector('.out-21').textContent = 10 + t21('odd') + 20;
+   document.querySelector('.out-21').textContent = t21('odd');
 })
 
 
