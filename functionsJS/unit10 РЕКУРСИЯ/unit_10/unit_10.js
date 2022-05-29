@@ -7,17 +7,17 @@ function t1(n) {
 
    function r1(z) {
       out += z + ' ';
-      if (z == 0) return out;
+      if (z == 0) return out;// можно без out
       r1(--z);
+
    }
+   console.log(out);
    return out;
 }
 
 document.querySelector('.b-1').addEventListener('click', () => {
    document.querySelector('.out-1').textContent = t1(5);
 })
-
-
 
 
 // Task 2
@@ -28,7 +28,7 @@ function t2(n) {
    r2(0);
 
    function r2(z) {
-      if (z > n) return out;
+      if (z > n) return out; // можно без out
       out += z + ' ';
       r2(z + 2);
    }
@@ -49,19 +49,26 @@ function randomInteger(min, max) {
 
 function t3(arr) {
    let rand = randomInteger(0, 100);
-   console.log('rand at the start', rand);
-   if ((rand % 2 === 0) && (arr === 'even')) {
+   console.log('rand at the start', rand); // вывод рандом числа, для подсчёта итераций
+   if (rand % 2 === 0 && arr === 'even') {
       return rand;
+   } else if (rand % 2 !== 0 && arr === 'odd') {
+      return rand;
+   } else {
+      return t3(arr);
    }
 
-   if ((rand % 2 !== 0) && (arr === 'odd')) {
-      return rand;
-   }
-   return t3(arr);
+
+   // or
+   // if (rand % 2 === 0 && arr === 'even') return rand;
+   // if (rand % 2 !== 0 && arr === 'odd') return rand;
+   // return t3(arr);
+   // or
+   // return (rand % 2 === 0 && arr === 'even') || (rand % 2 !== 0 && arr === 'odd') ? rand : t3(arr);
 }
 
 document.querySelector('.b-3').addEventListener('click', () => {
-   document.querySelector('.out-3').innerHTML = t3('odd');
+   document.querySelector('.out-3').innerHTML = t3('even');
 });
 
 // Task 4.
@@ -71,7 +78,13 @@ let ar4 = [3, 4, 6, 7, 8];
 
 function t4() {
    let rand = randomInteger(0, 10);
-   return ar4.includes(rand) ? t4() : rand;
+   if (ar4.includes(rand)) {
+      return t4();
+   }
+   return rand;
+
+   // or
+   // return ar4.includes(rand) ? t4() : rand;
 }
 
 document.querySelector('.b-4').addEventListener('click', () => {
@@ -89,8 +102,10 @@ function t5() {
    console.log(ar5);
    if (ar5.reduce((prev, current) => prev + current) <= 30) {
       t5();
+   } else {
+      return ar5;
    }
-   return ar5;
+   ar5 = [];
 }
 
 document.querySelector('.b-5').addEventListener('click', () => {
@@ -173,7 +188,7 @@ function t8() {
       leftPart += +random[i];
       rightPart += +random[random.length - i - 1];
    }
-   if (leftPart !== rightPart) random = t8();
+   if (leftPart !== rightPart) return t8();
    return random;
 }
 

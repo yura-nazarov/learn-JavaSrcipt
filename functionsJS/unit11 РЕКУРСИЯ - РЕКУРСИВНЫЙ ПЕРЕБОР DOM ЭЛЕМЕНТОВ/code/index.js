@@ -1,129 +1,166 @@
-//  ==================================================
-//  ===  как фукнкции обращаются к переменным пример 1
-//  ==================================================
-let a = 10;
-
+let t = 0;
 function f1() {
-    console.log('a(global)= ' + a);
+    t++;
+    console.log(t);
+    if (t === 100) return;
+    f1();
 }
 
-// f1();  // a - global 10
-
-//  ==================================================
-//  ===  как фукнкции обращаются к переменным пример 2
-//  ==================================================
-
+// f1();
+// цикл
 function f2() {
-    let a = 9; // обращаться к данной переменной можно только внутри функции
-    console.log('a(local)= ' + a);
+    let out = '';
+    for (let i = 1; i <= 30; i++) {
+        out += i + ' ';
+    }
+    console.log(out);
 }
 
-//f2();  // a(local)= 9
-// console.log(a);
+// f2();
+// рекурсией
+let i = 0;
+let out = '';
+function f3() {
+    i++;
+    out += i + ' ';
+    if (i >= 30) return;
+    f3();
+}
+// f3();
+// console.log(out);
 
-//  ==================================================
-//  ===  иногда значения нельзя разместить только внутри
-//  ==================================================
+// лицо с низкой социальной отв...
+function randomInteger(min, max) {
+    // случайное число от min до (max+1)
+    let rand = min + Math.random() * (max + 1 - min);
+    return Math.floor(rand);
+}
 
-// let count = 0;
-// function step() {
-//     count++;
-//     console.log(count);
-// }
-// step();
-// step();
-// step();
+let s1 = 0;
+function moneyRecursion() {
+    let m = randomInteger(0, 100);
+    console.log('add: ' + m);
+    s1 += m;
+    console.log('sum: ' + s1);
+    if (s1 >= 300) return;
+    moneyRecursion();
+}
 
-//  ==================================================
-//  ===  а давайте ка обернем это все функцией (замыкания)
-// === kloyжee
-//  ==================================================
-(
-    function () {
-        let count = 0;
-        function step() {
-            count++;
-            console.log(count);
+// moneyRecursion();
+
+function moneyCycle() {
+    let s2 = 0;
+    while (true) {
+        let m = randomInteger(0, 100);
+        console.log('add: ' + m);
+        s2 += m;
+        console.log('sum: ' + s2);
+        if (s2 >= 300) return;
+    }
+}
+
+// moneyCycle();
+
+// const 
+const users = {
+    "ivanov": {
+        age: 25,
+        parent: {
+            "ivanov-a": {
+                age: 45
+            },
+            "ivanov-b": {
+                age: 43,
+                parent: {
+                    "sergeev-a": {
+                        age: 88,
+                        parent: {
+                            "lionenko": {
+                                age: 33,
+                                parent: {
+                                    "petrov": {}
+                                }
+                            }
+                        }
+                    },
+                }
+            }
+        }
+    },
+    "kostenko": {
+        age: 56,
+        parent: {
+            "ignatenko": {
+
+            },
+            "sniezko": {
+                age: 45
+            }
         }
     }
-)();
-// step(); // вызовет ошибку
+}
 
-//  ==================================================
-//  === сделаем более удобным (замыкания)
-//  ==================================================
-function createStep() {
-    let count = 0;
-    return function () {
-        count++;
-        console.log(count);
+function userParentRecursion(obj) {
+    if (obj.parent !== undefined) {
+        for (let key in obj.parent) {
+            console.log(key);
+            userParentRecursion(obj.parent[key]);
+        }
     }
 }
 
-// let step1 = createStep(); // function
-// let step2 = createStep(); // function
-// step1();
-// step1();
-// step1();
-// step1();
-// step2();
-// step2();
-// step1(); // в инспекторе
+// for (let key in users) {
+//     userParentRecursion(users[key]);
+// }
 
-//  ==================================================
-//  === сделаем еще более удобным (замыкания)
-//  ==================================================
-function createStep2(n = 0) {
-    let count = n;
-    return function () {
-        count++;
-        console.log(count);
-        // return count;
+let position = 0;
+// document.querySelector('.block').addEventListener('click', () => {
+//     for (let i = 0; i < 400; i++) {
+//         position++;
+//         document.querySelector('.block').style.left = position + 'px';
+//     }
+// });
+
+function recursionAnimation() {
+    position = position + 5;
+    if (position > 400) return;
+    document.querySelector('.block').style.left = position + 'px';
+    animation();
+}
+
+function animation() {
+    setTimeout(recursionAnimation, 100);
+}
+
+// animation();
+
+// 1 * 2*3 5
+
+function fact1(n) {
+    let s = 1;
+    for (let i = 1; i <= n; i++) {
+        s = s * i;
     }
+    console.log(s);
+}
+// fact1(5);
+
+let s = 1;
+function fact2(n) {
+    if (n === 0) return;
+    s = s * n;
+    fact2(n - 1);
+}
+// fact2(5);
+// console.log(s);
+
+const tree = document.querySelector('.test');
+// console.log(tree);
+
+function treeTravelsal(elem) {
+    let innerElements = elem.children;
+    console.dir(elem);
+    Array.from(innerElements).forEach(item => treeTravelsal(item));
 }
 
-let step3 = createStep2(10);
-step3();
-
-//  ==================================================
-//  === Замыкание ( закрытие, сокрытие, скрытие )
-//  === возможность закрыть и использовать переменные в каком-то блоке видимости
-//  === защищать данные
-//  === не гадить в коде
-//  ==================================================
-
-
-//  ==================================================
-//  === Задача на попрошайку, с рекурсией
-//  ==================================================
-
-function randomInteger(min, max) {
-    // получить случайное число от (min-0.5) до (max+0.5)
-    let rand = min - 0.5 + Math.random() * (max - min + 1);
-    return Math.round(rand);
-}
-
-// бегга
-function createBeggar() {
-    let s = 0;
-    return function beggar() {
-        s += randomInteger(0, 100);
-        console.log(s);
-        if (s >= 250) return;
-        beggar();
-    }
-}
-
-// let begg1 = createBeggar();
-// begg1();
-// console.log('======================');
-// let begg2 = createBeggar();
-// begg2();
-
-
-
-//  ==================================================
-//  === Задача создания валидаторов 
-//  ==================================================
-
-let p;
+treeTravelsal(tree);

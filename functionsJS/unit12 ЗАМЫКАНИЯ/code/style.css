@@ -27,16 +27,3 @@ div.section {
     border-top: 1px dashed black;
     border-bottom: 1px dashed black;
 }
-
-.animation {
-    height: 50px;
-    position: relative;
-    border: 2px solid black;
-}
-
-.block {
-    width: 50px;
-    height: 50px;
-    background: orange;
-    position: absolute;
-}

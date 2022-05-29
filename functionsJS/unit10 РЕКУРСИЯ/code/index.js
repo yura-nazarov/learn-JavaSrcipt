@@ -28,8 +28,8 @@ let out = '';
 function f3() {
    i++;
    out += i + ' ';
-   if (i >= 30) return;
-   return f3();
+   if (i >= 30) return out;
+   f3();
 }
 // f3();
 // console.log(out);
@@ -47,9 +47,9 @@ function randomInteger(min, max) {
 let sum = 0; // эта переменная накапливает деньги
 let count = 1;
 function moneyRecursion() {
-   let ranomNum = randomInteger(0, 100);
-   console.log('add new coin(random number 0-100): ' + ranomNum);
-   sum += ranomNum;
+   let randomNum = randomInteger(0, 100);
+   console.log('add new coin(random number 0-100): ' + randomNum);
+   sum += randomNum;
    console.log('sum money: ' + sum);
    if (sum >= 300) return;
    count++
@@ -73,7 +73,7 @@ function moneyCycle() {
    }
 }
 
-// moneyCycle();
+moneyCycle();
 
 // ex 3
 
@@ -215,12 +215,14 @@ function fact2(n) {
 
 // получаем одни, целый элемент со всеми узлами. Теперь переберём его с помощью рекурсии
 const tree = document.querySelector('.test');
+const out12 = document.querySelector('.out12');
 // console.log('tree', tree);
-
+out12.textContent = '';
 function treeTravelsal(elem) {
-   console.log('elem', elem);
+   console.log('elem1', elem);
    let elemChildren = elem.children;
-   // console.log('elemChildren', elemChildren);
+   out12.textContent += elem.tagName + ' ';
+   console.log('elemChildren', elemChildren);
    Array.from(elemChildren).forEach(item => treeTravelsal(item));
 }
 
