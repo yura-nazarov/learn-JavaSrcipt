@@ -90,9 +90,7 @@ document.querySelector('.b-6').onclick = f6;
 // Вывод в out-7
 
 let d7 = ['china', 'india', 'brazil', 'japan', 'egypt'];
-let temp;
 function f7() {
-   // temp = d7[d7.length - 1];
    d7.length = d7.length - 1;
    showArr('.out-7', d7);
 }
@@ -149,10 +147,9 @@ let d10 = [3, 14, 15, 92, 6];
 function f10() {
    let temp = [];
    for (let i = 0; i < d10.length; i++) {
-      temp[i] = d10[d10.length - 1 - i];
+      temp[i] = d10[d10.length - i - 1];
    }
-   d10 = temp;
-   showArr('.out-10', d10);
+   showArr('.out-10', temp);
 }
 
 document.querySelector('.b-10').onclick = f10;
@@ -289,14 +286,25 @@ let d172 = [1, 2, 3, 4, 5];
 function f17() {
 
    function conCat(arrayContain, array) {
-      for (let i = 0; i < array.length; i++) {
-         arrayContain.push(array[i]);
+      let length = arrayContain.length;
+      for (let i = 0; i < (array.length); i++) {
+         arrayContain[length + i] = array[i];
       }
       return arrayContain;
    }
 
-   d17 = conCat(d17, d171);
-   d17 = conCat(d17, d172);
+   d17 = conCat(d171, d172);
+
+   // or
+   // function conCat(arrayContain, array) {
+   //    for (let i = 0; i < array.length; i++) {
+   //       arrayContain.push(array[i]);
+   //    }
+   //    return arrayContain;
+   // }
+
+   // d17 = conCat(d17, d171);
+   // d17 = conCat(d17, d172);
    showArr('.out-17', d17);
 }
 

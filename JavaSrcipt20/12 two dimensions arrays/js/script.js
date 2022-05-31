@@ -5,11 +5,12 @@ let b = [
    [7, 8, 9],
 ];
 
-console.log(b);
+console.log('b', b);
 
 let out = '';
 
 for (let i = b.length - 1; i >= 0; i--) {
+   console.log('b[i]', b[i]);
    for (let j = b[i].length - 1; j >= 0; j--) {
       console.log(b[i][j]);
       if (b[i][j] > 4) {
@@ -21,14 +22,15 @@ for (let i = b.length - 1; i >= 0; i--) {
 
 document.querySelector('.out').innerHTML = out;
 
+//ex 2
 let d = [1, 0, 0, 0, 0, 0];
-
 let k = 0;
+
 document.querySelector('.out2').innerHTML = d;
+
 document.querySelector('button').onclick = () => {
    d[k] = 0;
    d[k + 1] = 1;
    k++;
    document.querySelector('.out2').innerHTML = d;
-
 }

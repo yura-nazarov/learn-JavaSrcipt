@@ -4,7 +4,7 @@
 
 function t1(event) {
    document.querySelector('.out-1').textContent = event.key;
-   return event.key;
+   return event.key; // не обязателен
 }
 document.querySelector('.i-1').onkeypress = (event) => {
    t1(event);
@@ -16,7 +16,7 @@ document.querySelector('.i-1').onkeypress = (event) => {
 
 function t2(event) {
    document.querySelector('.out-2').textContent += '\'' + event.key + '\'' + '=' + event.charCode + ' ';
-   return event.charCode;
+   return event.charCode;// не обязателен
 }
 document.querySelector('.i-2').onkeypress = (event) => {
    t2(event);
@@ -35,7 +35,7 @@ function t3(event) {
    } else {
       document.querySelector('.out-3').textContent = true;
    }
-   return event.charCode;
+   return event.charCode; // не обязателен
 }
 document.querySelector('.i-3').onkeypress = (event) => {
    console.log(event.charCode);

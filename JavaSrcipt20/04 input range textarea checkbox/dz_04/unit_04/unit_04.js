@@ -144,7 +144,8 @@ function f12() {
 }
 
 document.querySelector('.b-12').onclick = f12;
-document.querySelector('.i-12').onchange = f12;
+// document.querySelector('.i-12').onchange = f12;
+// document.querySelector('.i-12').oninput = f12;
 
 // Task 13
 //  Создайте input(range).i-13. При изменении положения ползунка i-13 выводите значение в out-13. Для события используйте oninput.
@@ -228,9 +229,12 @@ document.querySelector('.b-19').onclick = f19;
 function f20(e) {
    e.preventDefault(); // чтобы форма не перезагружала страницу!!!!
    let form = document.querySelector('.f-20');
-   console.log(form.elements);
-   console.log(form.elements['username'].value); // так можно обратиться к элементу внутри формы
-   document.querySelector('.out-20').innerHTML = form.elements['username'].value + " " + form.elements['password'].value;
+   console.log('form', form);
+   console.log('form.elements', form.elements);
+   console.log('form.elements.password', form.elements.password); // так можно обратиться к элементу внутри формы
+   console.log("form.elements['name-username']", form.elements['name-username']); // так можно обратиться к элементу внутри формы
+   console.log("form.elements['name-username'].value", form.elements['name-username'].value); // так можно обратиться к элементу внутри формы
+   document.querySelector('.out-20').innerHTML = form.elements['name-username'].value + " " + form.elements['password'].value;
 
 }
 

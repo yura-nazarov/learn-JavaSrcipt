@@ -94,6 +94,7 @@ document.querySelector('.b-5').onclick = t5;
 
 function t6() {
    let out6 = document.querySelector('.out-6');
+   out6.innerHTML = '';
    let i6 = +document.querySelector('.i-6').value;
 
    if (i6) {
@@ -138,7 +139,7 @@ document.querySelector('.b-7').onclick = t7;
 
 function t8() {
    let out8 = document.querySelector('.out-8');
-
+   out8.innerHTML = '';
    let i81 = +document.querySelector('.i-81').value;
    let i82 = +document.querySelector('.i-82').value;
 
@@ -187,9 +188,11 @@ document.querySelector('.b-9').onclick = t9;
 
 function t10() {
    let out10 = document.querySelector('.out-10');
-
+   out10.innerHTML = '';
    for (let i = 1950; i <= 2000; i++) {
-      if (!(i % 2)) {
+      // if (!(i % 2)) {
+      // or
+      if (i % 2 === 0) {
          out10.innerHTML += i + ' ';
       }
    }
@@ -208,6 +211,7 @@ document.querySelector('.b-10').onclick = t10;
 let div11 = document.querySelectorAll('.div-11');
 let out11 = document.querySelector('.out-11');
 function t11() {
+   out11.innerHTML = '';
    for (let i = 0; i < div11.length; i++) {
       console.log(i);
       out11.innerHTML += div11[i].innerHTML + '<br>';
@@ -267,6 +271,14 @@ function t14() {
 }
 
 document.querySelector('.b-14').onclick = t14;
+// or
+// document.querySelector('.b-14').onclick = () => {
+//    for (let i = 0; i < i14.length; i++) {
+//       if (i14[i].checked) {
+//          out14.innerHTML = i14[i].value;
+//       }
+//    }
+// };
 
 //  Task 15
 // Кнопка b-15 запускает функцию t15  Функция должна выводить следующую последовательность в out-15:
@@ -275,9 +287,10 @@ document.querySelector('.b-14').onclick = t14;
 // Подсказка (10 - i) + ' ' + i
 
 let out15 = document.querySelector('.out-15');
-let j = 0;
 
 function t15() {
+   out15.innerHTML = '';
+   let j = 0;
    for (let i = 10; i >= 0; i--) {
       out15.innerHTML += i + ' ' + j + ' ';
       j++;

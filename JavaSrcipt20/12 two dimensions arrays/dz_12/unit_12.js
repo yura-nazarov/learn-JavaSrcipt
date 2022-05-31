@@ -60,8 +60,11 @@ function f5() {
    let out = '';
    let a5 = [[1, 2], [3, 4], [5, 6], [21, 34], [44, 56]];
    for (let i = 0; i < a5.length; i++) {
-      if (a5[i][0] % 2 == 0) out += a5[i][0] + ' ';
-      if (a5[i][1] % 2 == 0) out += a5[i][1] + ' ';
+      console.log('a5[i]', a5[i]);
+      for (let j = 0; j < a5[i].length; j++) {
+         console.log('a5[i][j]', a5[i][j]);
+         if (a5[i][j] % 2 == 0) out += a5[i][j] + ' ';
+      }
    }
    document.querySelector('.out-5').innerHTML = out;
 }
@@ -218,7 +221,6 @@ function f12() {
    for (let i = 0; i < a12.length; i++) {
       for (let j = 0; j < a12[i].length; j++) {
          if (a12[i][j] == 1) out += a12[i][j] + ' ';
-         console.log('adf');
       }
    }
    document.querySelector('.out-12').innerHTML = out;
@@ -238,7 +240,7 @@ function f13() {
       for (let j = 0; j < 8; j++) {
 
          if ((i % 2) === 0) {
-            console.log('chetny');
+            console.log('chetny i', i);
             if ((j % 2) === 0) {
                t[j] = 0;
                out += t[j] + '  ';
@@ -247,7 +249,7 @@ function f13() {
                out += t[j] + '  ';
             }
          } else {
-            console.log('ne chetny');
+            console.log('ne chetny i', i);
             if ((j % 2) === 0) {
                t[j] = 1;
                out += t[j] + '  ';
@@ -258,6 +260,7 @@ function f13() {
          }
       }
       a13[i] = t;
+      console.log(t);
       out += '<br>';
    }
    console.log(a13);

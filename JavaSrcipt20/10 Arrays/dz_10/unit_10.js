@@ -31,7 +31,7 @@ let ar1 = [3, 23, '232423', '{234234, 23423}', 2342, 'asdfasf', true];
 function f1() {
    //ваш_элемент.innerHTML = ar1; // да так можно выводить!!!!
    for (let i = 0; i < ar1.length; i++) {
-      out += ar1[i] + ' ' + typeof (ar1[i]);
+      out += ar1[i] + ' ' + typeof (ar1[i]) + '<br>';
    }
    out1.innerHTML = out;
 }
@@ -47,7 +47,7 @@ let ar2 = [3, 23, '232423', '{234234, 23423}', 2342, 'asdfasf', true];
 function f2() {
    let out = '';
    for (let i = 0; i < ar2.length; i++) {
-      out += ar2[i] + ' ';
+      out += ar2[i] + '<br>';
    }
    document.querySelector('.out-2').innerHTML = out;
 }
@@ -60,10 +60,10 @@ document.querySelector('.b-2').onclick = f2;
 // Вывод в out-3
 // Тест допустим массив [1,2,3] вывод - 3
 
-// let ar3 =  // переменную обьявляем здесь!!!!
+let ar3 = [1, 2, 3];
 
 function f3() {
-   out3.innerHTML = ar2.length;
+   out3.innerHTML = ar3.length;
 }
 
 document.querySelector('.b-3').onclick = f3;
@@ -147,10 +147,18 @@ document.querySelector('.b-7').onclick = f7;
 // Вывод - по нажатию кнопки b-8
 // Вывод в out-8
 
-let ar8 = [0, 1, 2, 3.14, 17, 5];
+let ar8 = [0, 1, 2, 5];
 
 function f8() {
-   out8.innerHTML = ar8.length;
+   let out = '';
+   ar8[3] = 3;
+   ar8[4] = 14;
+   ar8[6] = 5;
+   out8.innerHTML = ar8.length + '<br>';
+   for (let i = 0; i < ar8.length; i++) {
+      out += ar8[i] + ' ';
+   }
+   out8.innerHTML += out;
 }
 
 document.querySelector('.b-8').onclick = f8;
@@ -265,6 +273,7 @@ document.querySelector('.b-13').onclick = () => {
 let ar14 = [1, 2, 3, 'hello', 66];
 
 function f14() {
+   let out = '';
    for (let i = ar14.length - 1; i >= 0; i--) {
       out += ar14[i] + ' ';
    }
@@ -409,30 +418,41 @@ document.querySelector('.b-20').onclick = f20;
 // Отсортировать массиво от меньшего к большему
 // Вывод в out-21
 
-let ar212 = [4, 5, 1, 7, -8, 9, 0, 12, -323, 3, 1, 2, 4, 5, -34, 5, 7, 5, 5, 5, 6];
-let ar21 = ar212;
+let ar21 = [4, 5, 1, 7, -8, 9, 0, 12, -323, 3, 1, 2, 4, 5, -34, 5, 7, 5, 5, 5, 6];
+// let ar21 = ar212;
+// let ar21 = [];
 function f21() {
    let min;
    let temp = min;
 
    for (let currentIndex = 0; currentIndex < ar21.length; currentIndex++) {
-      console.log('currentIndex=', currentIndex);
+      console.log('currentIndex =', currentIndex);
       min = ar21[currentIndex];
+      console.log('start min lement', ar21[currentIndex]);
 
       for (let i = currentIndex; i < ar21.length; i++) {
-         console.log('ar21[' + i + ']=', ar21[i]);
+         console.log('ar21[' + i + '] =', ar21[i]);
 
          if (ar21[i] < min) {
-            console.log('Found new min in ar21 ', ar21[i]);
-            min = ar21[i]; console.log('min ', min);
-            temp = ar21[currentIndex]; console.log('temp ', temp);
-            ar21[currentIndex] = ar21[i]; console.log('ar21[currentIndex] ', ar21[currentIndex]);
-            ar21[i] = temp; console.log('old min ar21 ', ar21[i]);
+            console.log('Found new min ', ar21[i]);
+
+            temp = min; // сохраняем во временную переменную
+            console.log('temp ', temp);
+
+            min = ar21[i];
+            console.log('min ', min);
+
+
+            ar21[currentIndex] = min;
+            console.log('ar21[currentIndex] ', ar21[currentIndex]);
+
+            ar21[i] = temp;
+            console.log('old min ', ar21[i]);
          }
 
       }
    }
-   out21.innerHTML = out;
+   out21.innerHTML = ar21;
    console.log(ar21);
 }
 

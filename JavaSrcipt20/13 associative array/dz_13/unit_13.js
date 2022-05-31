@@ -49,11 +49,12 @@ function f3() {
       "odd": "hi",
       "mix": "mix"
    };
+
    let out = '';
-   console.log(a3.length);
-   // for (let k in a3) {
-   //    if (a3[k] == 'hi') out += a3[k] + ' ';
-   // }
+
+   for (let k in a3) {
+      if (a3[k] == 'hi') out += a3[k] + ' ';
+   }
 
    return out;
 }
@@ -284,12 +285,10 @@ function f12(arr, block) {
    let out = '';
    let inn = document.querySelector('.i-12').value;
 
-   console.log(inn);
-
    for (let key in arr) {
       console.log('inn', inn, ' arr', arr[key]);
 
-      if (arr[key] == inn) delete arr[key];
+      if (key == inn) delete arr[key];
       out += arr[key] + ' ';
    }
    document.querySelector(block).innerHTML = out;
@@ -360,11 +359,13 @@ let a15 = {
 function f15(arr, block) {
    let outDiv = document.querySelector(block);
    for (let key in arr) {
-      console.log(arr[key]);
-      if (key != key - 1) {
-         out += '<br>';
+      console.log('key', key);
+      console.log('arr[key]', arr[key]);
+
+      for (let i = 0; i < arr[key].length; i++) {
+         out += arr[key][i] + ' ';
       }
-      out += arr[key] + ' ';
+      out += '<br>';
    }
    outDiv.innerHTML = out;
 }
@@ -394,13 +395,14 @@ let a16 = {
 
 function f16(arr, block) {
    let outDiv = document.querySelector(block);
-
+   let out = '';
    for (let key in arr) {
       for (let key1 in arr[key]) {
          if (key1 == 'name') out += arr[key][key1] + ' ';
       }
    }
    // ниже алгоритм будет работать, если ассоциативный массив - однородный
+   // т.е. если поле name точно присутствует
    // for (let key in arr) {
    //    out += arr[key].name + ' ';
    // }
@@ -459,7 +461,8 @@ let a18 = {
 function f18() {
    let inn = document.querySelector('.i-18').value;
    let outDiv = document.querySelector('.out-18');
-   outDiv.innerHTML = '';
+   outDiv.innerHTML = 'такой ветки нет';
+
    if (a18[inn]) outDiv.innerHTML = a18[inn].join('<br>');
 }
 
@@ -512,8 +515,10 @@ function f20(arr, block) {
 
    for (let key in arr) {
       for (let key1 in arr[key]) {
-         if (arr[key][key1].includes(1)) out += `${arr[key][key1][0]} `;
-         console.log(arr[key][key1][0]);
+         if (arr[key][key1].includes(2)) {
+            out += `${arr[key][key1][0]} `;
+            console.log(arr[key][key1][0]);
+         }
       }
    }
 

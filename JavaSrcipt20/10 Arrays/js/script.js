@@ -18,15 +18,16 @@
 // console.log(man);
 
 let a = [1, 2, 3, 4];
-console.log(a);
+console.log('a', a);
 
 let t = a[0];
 a[0] = a[a.length - 1];
 console.log(a);
-a[a.length - 1] = t;
+a[a.length - 1] = t; // не сработает
+a[a.length - 1] = 't';
 console.log(a);
 
-console.log(a[888]);
+console.log(a[888]); // undefined
 
 let out = '';
 

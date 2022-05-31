@@ -4,11 +4,20 @@ let assArr = {
    "e": 22
 };
 let set = new Set([9, 8, 7, 6, 5]);
-let allP = document.getElementsByTagName('p');
-console.log('getElementsByTagName', allP.length);
+let allP = document.getElementsByName('div2');
+console.log('getElementsByTagName', allP);
+
 let arr1 = document.querySelectorAll('.div1');
-console.log('querySelectorAll', arr1.length);
+console.log('querySelectorAll', arr1);
+
+// arr1 = 'asdf sadf 232423 234234 safsad fsadfas fsa df';
+// arr1 = {
+//    key1: 'elemen1',
+//    key2: 'elemen2',
+//    key3: 'elemen3',
+// }
 arr = arr1;
+
 //1==================
 console.log('#1 for (let i = 0; i < arr.length; i++)');
 for (let i = 0; i < arr.length; i++) {

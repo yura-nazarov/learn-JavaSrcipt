@@ -5,6 +5,7 @@ let a1 = 8;
 let out1 = document.querySelector('.out-1');
 function t1() {
    out1.innerHTML = a1;
+   // return this.innerHTML = a1;
 }
 
 document.querySelector('.b-1').onclick = t1;
@@ -83,7 +84,9 @@ document.querySelector('.b-6').onclick = function () {
 // Напишите функцию t7, которая возвращает случайный цвет в формате rgb(x, y, z)(строка).Где x, y, z - случайные числа в диапазоне[0, 255]. 
 
 function t7() {
-   console.log(Math.random() * 256 << 0);
+   let random = Math.random();
+   console.log(random * 256);
+   console.log(random * 256 << 0); // округляет до целых
    return `rgb(${t6(0, 256)}, ${t6(0, 256)}, ${t6(0, 256)}`;
 }
 

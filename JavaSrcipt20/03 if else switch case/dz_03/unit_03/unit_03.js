@@ -108,8 +108,9 @@ document.querySelector('.b-7').onclick = f7;
 // Дан select s-8, который содержит 3 значения: 1, 2, 3. Дана кнопка b-8. При ее  нажатии срабатывает функция f8. Функция должна получить выбранное в select число, потом с помощью switch case сравнить его поочередно с ‘1’, ‘2’, ‘3’. И если число выбрано - 1, то вывести в out-8 строку one, если 2 - two, если 3 - three.
 
 function f8() {
-   let s8 = document.querySelector('.s-8').value;
-   switch (s8) {
+   const s8 = document.querySelector('.s-8');
+   // document.querySelector('.out-8').innerHTML = s8[s8.value - 1].textContent;
+   switch (s8.value) {
       case '1':
          document.querySelector('.out-8').innerHTML = 'one';
          break;
@@ -150,8 +151,9 @@ document.querySelector('.b-9').onclick = f9;
 // Дан select s-100. По нажатию кнопки, выведите value выбранного option в out-10.
 
 function f10() {
-   let s100 = document.querySelector('.s-100').value;
-   document.querySelector('.out-10').innerHTML = s100;
+   let s100 = document.querySelector('.s-100');
+   document.querySelector('.out-10').innerHTML = s100.value;
+   // document.querySelector('.out-10').innerHTML = s100[2].outerHTML;
 }
 
 document.querySelector('.b-10').onclick = f10;

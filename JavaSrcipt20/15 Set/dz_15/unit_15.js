@@ -13,7 +13,6 @@ s1.add('h');
 // Task 2
 // При нажатии b-2 выполняете функцию f2. Функция должна добавить в набор s2 элементы, которые пользователь вводит в i-2. Функция должна выводить в консоль s2 после каждого добавления элемента.
 
-
 // let s2 =
 
 const f2 = () => {
@@ -101,13 +100,14 @@ let s8 = new Set([1, 2, 3, 4, 5, 3, 4, 7, 9, 5, 7, 8, 9, 23, 45, 5, 2, 4, 5, 3, 
 let ar8 = [];
 
 const f8 = () => {
-   let i = 0;
-
+   // let i = 0;
    // for (let item of s8) {
    //    if (item > 5) {
    //       ar8.push(item);
    //    }
    // }
+   // or
+   s8 = new Set(s8);
    s8.forEach((item) => {
       if (item > 5) ar8.push(item);
    })
@@ -123,13 +123,18 @@ document.querySelector('.b-8').onclick = f8;
 
 const f9 = our_set => {
    let out = '';
-   for (let item in our_set) {
-      out += `${item} `;
-   }
+   out = Array.from(our_set).join(' ');
+   // or
+   // for (let item in our_set) {
+   //    out += `${item} `;
+   // }
+
+   // or
    // for (let item of our_set) {
    //    out += `${item} `;
    // }
 
+   // or
    // our_set.forEach((item) => {
    //    out += `${item} `;
    // });
@@ -167,6 +172,8 @@ const f11 = () => {
    s.add([1]);
    s.add([1]);
    s.add([1]);
+   s.add(['1']);
+   s.add(['1']);
    s.add(1);
    s.add(1);
    console.log(s);
@@ -182,12 +189,14 @@ let str12 = 'The name conjures up visions of plum pudding and Christmas punch qu
 
 const f12 = () => {
    let t = [];
-   for (let i = 0; i < str12.length; i++) {
-      // console.log(str12[i]);
-      t.push(str12[i]);
-   }
+   let s12 = str12.split('');
+   console.log(s12);
+   // for (let i = 0; i < str12.length; i++) {
+   //    console.log(str12[i]);
+   //    t.push(str12[i]);
+   // }
    // console.log(t);
-   let s12 = new Set(t);
+   s12 = new Set(s12);
 
    return s12;
 }
@@ -209,27 +218,29 @@ const f13 = () => {
    let arr = [];
    let i = 0;
    let out = '';
-   for (let i = 0; i < str13.length; i++) {
-      arr.push(str13[i]);
-   }
+   // for (let i = 0; i < str13.length; i++) {
+   //    arr.push(str13[i]);
+   // }
+   // or
+   let array = str13.split('');
+   console.log('s13 Array', array);
 
-   console.log(arr);
-   let s13 = new Set(arr);
-   console.log(s13);
+   s13 = new Set(array);
+   console.log('Set(s13)', s13);
 
-   s13.forEach((e) => {
+   s13.forEach((elemSet) => {
       let count = 0;
-      for (i = 0; i < arr.length; i++) {
-         if (e == arr[i]) {
-            if (e == ' ') e = 'empty';
+      array.forEach(elemArray => {
+         if (elemSet == elemArray) {
+            if (elemArray == ' ') elemSet = 'empty';
             count++;
          }
-      }
-      out += `${e}:${count} `;
+      })
+      out += `${elemSet}:${count} `;
    })
-   return out;
+   return console.log(out);
 }
 
 document.querySelector('.b-13').onclick = () => {
-   console.log(f13());
+   f13();
 }

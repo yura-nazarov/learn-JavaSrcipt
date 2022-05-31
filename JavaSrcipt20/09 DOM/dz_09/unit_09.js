@@ -47,7 +47,7 @@ document.querySelector('.b-4').onclick = f4;
 function f5() {
    let out5 = document.querySelector('.out-5');
    let out4 = document.querySelector('.out-4');
-   out5.innerHTML = (out4.classList.contains('bg-4'));
+   out5.innerHTML = out4.classList.contains('bg-4');
 }
 
 document.querySelector('.b-5').onclick = f5;
@@ -74,6 +74,7 @@ function f7() {
    let out7 = document.querySelectorAll('.out-7');
    for (let i = 0; i < out7.length; i++) {
       out7[i].classList.add('bg-7');
+      out7[i].style.marginBottom = '10px';
    }
 }
 
@@ -121,7 +122,6 @@ let out10 = document.querySelectorAll('.out-10');
 
 for (let i = 0; i < out10.length; i++) {
    out10[i].onclick = f10;
-   console.log(i);
 }
 
 // или так для touch
@@ -210,7 +210,7 @@ function f16() {
    let a = document.createElement('div');
    a.innerHTML = '16';
    a.classList.add('bg-16');
-   document.querySelector('.out-16').replaceWith(a);
+   document.querySelector('.out-16').after(a);
 }
 
 document.querySelector('.b-16').onclick = f16;
@@ -222,7 +222,7 @@ function f17() {
    let a = document.createElement('div');
    a.innerHTML = '17';
    a.classList.add('bg-17');
-   document.querySelector('.out-17').after(a);
+   document.querySelector('.out-17').replaceWith(a);
 }
 
 document.querySelector('.b-17').onclick = f17;

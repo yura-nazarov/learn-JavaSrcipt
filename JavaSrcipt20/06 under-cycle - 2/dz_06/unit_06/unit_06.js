@@ -220,7 +220,7 @@ document.querySelector('.b-8').onclick = t8;
 // <p>Внешний цикл выводит перенос строки br. Вложенный цикл рисует цифры</p>
 function t9() {
    let out9 = document.querySelector('.out-9');
-
+   out = '';
    for (let i = 2; i < 7; i++) {
       for (let j = 1; j < i; j++) {
          out += j + ' ';
@@ -247,14 +247,16 @@ document.querySelector('.b-9').onclick = t9;
 // <p>Вложенный цикл рисует цифры от 0 до 9. Обратите внимание, что первый ряд - есть ведущий нуль. Здесь все просто - проверили, если число меньше 10 - то конкатенируем нуль.</p>
 function t10() {
    let out10 = document.querySelector('.out-10');
-
+   out = '';
    for (let i = 0; i < 5; i++) {
       for (let j = 1; j < 11; j++) {
-         if (j == 10) {
-            out += `${(i + 1) * j}`;
-         } else {
-            out += `${i}${j} `;
-         }
+         j !== 10 ? out += `0${j} ` : out += `${j}`;
+         // or
+         // if (j == 10) {
+         //    out += `${(i + 1) * j}`;
+         // } else {
+         //    out += `${i}${j} `;
+         // }
       }
       out += `<br>`;
    }

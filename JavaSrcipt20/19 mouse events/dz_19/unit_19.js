@@ -19,7 +19,7 @@ function t2(event) {
 }
 
 document.querySelector('.div-2').onclick = (event) => {
-   console.log(event);
+   // console.log(event);
    // console.log(event.altKey);
 
    document.querySelector('.out-2').textContent = t2(event);
@@ -94,7 +94,7 @@ document.querySelector('.div-7').oncontextmenu = () => {
 // Task 8 ============================================
 /*  Дано checkbox .ch-8. Повесьте на него событие onchange при котором на документе отключается клик правой кнопкой мыши если checkbox выбран и отключает если не выбран. */
 
-function t8() {
+function t8(event) {
    if (document.querySelector('.ch-8').hasAttribute('checked')) {
       document.oncontextmenu = () => { return false; }
    } else {
@@ -102,9 +102,9 @@ function t8() {
    }
 }
 
-document.querySelector('.ch-8').onclick = () => {
+document.querySelector('.ch-8').onclick = (event) => {
    document.querySelector('.ch-8').toggleAttribute('checked');
-   t8();
+   t8(event);
 };
 // ваше событие здесь!!!
 
@@ -112,11 +112,11 @@ document.querySelector('.ch-8').onclick = () => {
 // Task 9 ============================================
 /*  Дан блок .div-9. Внутри блока - изображение 1.png. При клике правой кнопкой мыши  - меняйте изображение на 2.png. Надеюсь вы догадаетесь изменить только src изображения? */
 
-function t9() {
+function t9(event) {
    // document.querySelector('.div-9 > img').src = "img/2.png";
    // способо выше тоже работает
    document.querySelector('.div-9 > img').setAttribute("src", "img/2.png")
-
+   event.preventDefault();
    // if (document.querySelector('.div-9 > img').src = "img/2.png") {
    //    console.log('true');
    //    document.querySelector('.div-9 > img').src = "img/1.png";
@@ -126,9 +126,9 @@ function t9() {
    // }
 }
 
-document.querySelector('.div-9').oncontextmenu = () => {
+document.querySelector('.div-9').oncontextmenu = (event) => {
    // document.querySelector('.div-9 > img').setAttribute("src", "img/1.png")
-   t9();
+   t9(event);
 }
 // ваше событие здесь!!!
 
@@ -204,7 +204,7 @@ let count = 1;
 function t15() {
    document.querySelector('.div-15').innerHTML = count;
    count++;
-   console.log(count);
+   // console.log(count);
 }
 document.querySelector('.div-15').onmousemove = t15;
 
@@ -214,14 +214,14 @@ document.querySelector('.div-15').onmousemove = t15;
 // Task 16 ============================================
 /*  Дан блок .div-16. Добавьте на него событие move. При каждом движении мыши увеличивайте ширину блока на 1px. */
 
-count = 75;
-function t16() {
+let count1 = 75;
+function t16(event) {
 
-   document.querySelector('.div-16').style.width = count + 'px';
-   count++;
+   document.querySelector('.div-16').style.width = count1 + 'px';
+   count1++;
 }
 document.querySelector('.div-16').onmousemove = (event) => {
-   console.log(event);
+   // console.log(event);
    t16();
 }
 // ваше событие здесь!!!
@@ -235,11 +235,8 @@ function t17On() {
 
 function t17Off() {
    document.querySelector('.div-16').onmousemove = null;
-
+   // document.querySelector('.div-16').onclick = t16;
 }
-
-let change1;
-let change2;
 
 document.querySelector('.b-17_on').onclick = t17On;
 document.querySelector('.b-17_off').onclick = t17Off;

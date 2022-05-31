@@ -11,8 +11,6 @@ function t1() {
    catch {
       document.querySelector('.out-1').textContent = 1;
    }
-   // тут catch
-   // .. и вывод
 }
 
 document.querySelector('.b-1').onclick = t1;
@@ -45,7 +43,7 @@ function t3() {
       document.querySelector('.out-3').innerHTML = a * b;
    }
    catch (err) {
-      let div = document.createElement('div');
+      const div = document.createElement('div');
       document.querySelector('.b-3').after(div);
       div.classList.add('out-3');
       // div.innerHTML = a * b;
@@ -70,6 +68,7 @@ function t4() {
    }
    catch (arr) {
       document.querySelector('.out-4').innerHTML = 0;
+      console.log(arr);
    }
 }
 

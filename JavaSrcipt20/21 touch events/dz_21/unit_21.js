@@ -158,9 +158,7 @@ let currentImageSrc = '';
 function nextFunction() {
    IMAGES[currentActive].classList.remove('active-img');
    currentActive++;
-   if (currentActive > IMAGES.length - 1) {
-      currentActive = 0
-   }
+   if (currentActive > IMAGES.length - 1) currentActive = 0
    IMAGES[currentActive].classList.add('active-img');
 
    currentImageMax();
@@ -169,9 +167,8 @@ function nextFunction() {
 function prevFunction() {
    IMAGES[currentActive].classList.remove('active-img');
    currentActive--;
-   if (currentActive < 0) {
-      currentActive = 5
-   }
+   if (currentActive < 0) currentActive = 5
+
    IMAGES[currentActive].classList.add('active-img');
 
    currentImageMax();
@@ -192,9 +189,9 @@ function currentImageMax() {
 
 //for touch activity
 IMAGES.forEach((elem, index) => {
-   elem.addEventListener("touchend", function () {
+   elem.addEventListener("touchend", () => {
       IMAGES[currentActive].classList.remove('active-img');
-      this.classList.add('active-img');
+      elem.classList.add('active-img');
       currentActive = index;
 
       currentImageMax();
