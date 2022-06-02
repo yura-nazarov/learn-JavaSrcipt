@@ -1,5 +1,5 @@
 function inputNum(num) {
-	return document.querySelector(`.i-${num}`).value
+   return document.querySelector(`.i-${num}`).value
 }
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция считывает значение из i-1 и с помощью push добавляет полученную из input строку в массив a1. Функция выводит массив a1 в консоль.
@@ -7,8 +7,10 @@ function inputNum(num) {
 
 let a1 = ['hello', 't'];
 
-// const f1 = 
-
+const f1 = () => {
+   const i = document.querySelector('.i-1').value;
+   a1.push(i);
+   console.log(a1);
 }
 
 // TASK 02
@@ -16,7 +18,10 @@ let a1 = ['hello', 't'];
 
 let a2 = ['b', 'c', 12, 34, 'dh', 17];
 
-const f2
+const f2 = () => {
+   const i = document.querySelector('.i-2').value;
+   a2.push(i, (i ** 3));
+   console.log(a2);
 }
 
 // TASK 03
@@ -25,8 +30,10 @@ const f2
 
 let a3 = ['a', 'b'];
 
-const f3 
-
+const f3 = () => {
+   const i = document.querySelector('.i-3').value;
+   a3.push(i);
+   console.log(a3);
 }
 
 // TASK 04
@@ -34,10 +41,21 @@ const f3
 
 
 let a4 = [1, 2];
-let a4_1 = [5, 6];
+let a4_1 = [
+   [5, 6]
+   [1, 2]
+];
 
-const f4 
+let a4_2 = {
+   3: "asdfsadf",
+   3: "asdfasdf",
+   43: "asdfdasf"
+}
 
+const f4 = () => {
+
+   a4.push(a4_2);
+   console.log(a4);
 }
 
 // TASK 05
@@ -46,8 +64,11 @@ const f4
 
 let a5 = [55, 66, 77];
 
-const f5 
-
+const f5 = () => {
+   const i = +document.querySelector('.i-5').value;
+   a5[a5.length] = i;
+   console.log(a5);
+   console.log(a5[a5.length - 1]);
 }
 
 // TASK 06
@@ -56,8 +77,8 @@ const f5
 
 let a6 = ['a', 'b'];
 
-const f6 =(a,b)
-
+const f6 = (arr, i) => {
+   return arr.push(i);
 }
 
 // TASK 07
@@ -65,8 +86,9 @@ const f6 =(a,b)
 
 let a7 = [21, 22, 23, 24, 25, 26, 27];
 
-const f7 
-
+const f7 = () => {
+   a7.pop();
+   console.log(a7);
 }
 
 // TASK 08
@@ -76,8 +98,8 @@ const f7
 
 let a8 = [99, 98, 97, 96];
 
-const f8 
-
+const f8 = () => {
+   return a8.pop();
 }
 
 // TASK 09
@@ -85,8 +107,9 @@ const f8
 
 let a9 = ['A', 2, true, function () { console.log(2) }, [2, 3, 4], { "test": 1 }];
 
-const f9 
-
+const f9 = () => {
+   a9.pop();
+   console.log(a9);
 }
 
 // TASK 10
@@ -95,7 +118,13 @@ const f9
 const a10 = [67, '55', 2, 5, '4', '8', 8, '66', '54', 11];
 
 const f10 = () => {
+   let res;
+   res = a10[a10.length - 1];
+   a10.length = a10.length - 1;
+   // or
+   // res = a10.splice(-2, 2).join();
 
+   return res;
 }
 
 
@@ -105,14 +134,14 @@ document.querySelector('.b-3').addEventListener('click', f3);
 document.querySelector('.b-4').addEventListener('click', f4);
 document.querySelector('.b-5').addEventListener('click', f5);
 document.querySelector('.b-6').addEventListener('click', () => {
-	let elem = document.querySelector('.i-6').value;
-	console.log(f6(a6, elem));
+   let elem = document.querySelector('.i-6').value;
+   console.log(f6(a6, elem));
 });
 document.querySelector('.b-7').addEventListener('click', f7);
 document.querySelector('.b-8').addEventListener('click', () => {
-	console.log(f8());
+   console.log(f8());
 });
 document.querySelector('.b-9').addEventListener('click', f9);
 document.querySelector('.b-10').addEventListener('click', () => {
-	console.log(f10());
+   console.log(f10());
 });

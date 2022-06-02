@@ -1,3 +1,13 @@
+const out1 = document.querySelector('.out-1');
+const out2 = document.querySelector('.out-2');
+const out3 = document.querySelector('.out-3');
+const out4 = document.querySelector('.out-4');
+const out5 = document.querySelector('.out-5');
+const out6 = document.querySelector('.out-6');
+const out7 = document.querySelector('.out-7');
+const out8 = document.querySelector('.out-8');
+const out9 = document.querySelector('.out-9');
+const out10 = document.querySelector('.out-10');
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция с помощью join должна объединить элементы массива a1 в строку. Разделитель не указывать. Результат вывести в out-1.
 
@@ -5,7 +15,7 @@
 let a1 = [13, 15, 22, 23, 26, 35, 72];
 
 const f1 = () => {
-    document.querySelector('.out-1').innerHTML = a1.join()
+   out1.textContent = a1.join();
 }
 
 
@@ -15,7 +25,8 @@ const f1 = () => {
 let a2 = [13, 15, 22, 23, 26, 35, 72];
 
 const f2 = () => {
-    document.querySelector('.out-2').innerHTML = a2.join('')
+   out2.textContent = a2.join(' ');
+
 }
 
 // TASK 03
@@ -24,7 +35,8 @@ const f2 = () => {
 let a3 = [13, 15, 22, 23, 26, 35, 72];
 
 const f3 = () => {
-    document.querySelector('.out-3').innerHTML = a3.join('=')
+   out3.textContent = a3.join('=');
+
 }
 
 // TASK 04
@@ -36,15 +48,8 @@ let a4 = [66, 77, 88];
 let delimiter4 = '-';
 
 const f4 = (arr, delimiter) => {
-    let rez = ''
-    for(let i = 0; i < arr.length; i++) {
-        if(i == arr.length - 1) {
-            rez+=arr[i]
-        } else {
-            rez += arr[i] + delimiter4
-        }
-    }
-    return rez
+   return arr.join(delimiter);
+
 }
 
 // TASK 05
@@ -56,7 +61,7 @@ a5[56] = 56;
 a5[57] = 56;
 
 const f5 = () => {
-    document.querySelector('.out-5').innerHTML = a5.join('=')
+   out5.innerHTML = a5.join('=');
 }
 
 // TASK 06 
@@ -67,9 +72,9 @@ let s6 = 'hello';
 let a6_res = [];
 
 const f6 = () => {
-    a6_res = s6.split('')
-    document.querySelector('.out-6').innerHTML = a6_res
- }
+   a6_res = s6.split('');
+   out6.innerHTML = a6_res;
+}
 
 
 // TASK 07
@@ -80,8 +85,8 @@ let s7 = 'hello';
 let a7_res = [];
 
 const f7 = () => {
-   a7_res = s7.split('', 3)
-    document.querySelector('.out-7').innerHTML = a7_res
+   a7_res = s7.split('', 3);
+   out7.innerHTML = a7_res;
 }
 
 // TASK 08
@@ -91,8 +96,7 @@ let s8 = 'abrikos';
 let a8_res = '';
 
 const f8 = () => {
-    a8_res = s8.split('').reverse().join('')
-    document.querySelector('.out-8').innerHTML = a8_res
+   out8.textContent = s8.split('').reverse().join('');
 }
 
 // TASK 09
@@ -102,8 +106,8 @@ let s9 = 'hiall';
 let a9_res = [];
 
 const f9 = () => {
-    a9_res = [...s9];
-    document.querySelector('.out-9').innerHTML = a9_res.join(' ')
+   a9_res = [...s9]
+   out9.innerHTML = a9_res.join(' ');
 }
 
 // TASK 10
@@ -114,14 +118,8 @@ let s10 = 'fghijklmnoprsq';
 let a10_res = [];
 
 const f10 = () => {
-    a10_res = [...s10]
-    let rez = a10_res.filter((item)=>{
-        console.log(item)
-        if(item > 'l'){
-            return true
-        }
-    })
-    document.querySelector('.out-10').innerHTML = rez
+   a10_res = [...s10];
+   out10.innerHTML = a10_res.filter(elem => elem < 'l');
 }
 
 
@@ -130,7 +128,7 @@ document.querySelector('.b-1').addEventListener('click', f1);
 document.querySelector('.b-2').addEventListener('click', f2);
 document.querySelector('.b-3').addEventListener('click', f3);
 document.querySelector('.b-4').addEventListener('click', () => {
-    document.querySelector('.out-4').innerHTML = f4(a4, delimiter4);
+   document.querySelector('.out-4').innerHTML = f4(a4, delimiter4);
 });
 document.querySelector('.b-5').addEventListener('click', f5);
 document.querySelector('.b-6').addEventListener('click', f6);

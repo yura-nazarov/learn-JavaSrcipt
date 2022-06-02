@@ -1,3 +1,13 @@
+const out1 = document.querySelector('.out-1');
+const out2 = document.querySelector('.out-2');
+const out3 = document.querySelector('.out-3');
+const out4 = document.querySelector('.out-4');
+const out5 = document.querySelector('.out-5');
+const out6 = document.querySelector('.out-6');
+const out7 = document.querySelector('.out-7');
+const out8 = document.querySelector('.out-8');
+const out9 = document.querySelector('.out-9');
+const out10 = document.querySelector('.out-10');
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция с помощью find должна найти первый элемент массива a1, значение которого лежит от a1_from до a1_to (больше a1_from но меньше a1_to). Вывести найденный элемент в out-1. Если значение не найдено то выводить undefined.
 
@@ -8,12 +18,9 @@ let a1_to = 27;
 // ожидаю 26, но вы протестируйте и на других
 
 const f1 = () => {
-	let res = a1.find(item => {
-		if (item > a1_from && item < a1_to) {
-			return true
-		}
-	})
-	document.querySelector('.out-1').innerHTML = res
+   out1.textContent = a1.find(elem => {
+      if (elem > a1_from && elem < a1_to) return true;
+   });
 }
 
 
@@ -21,20 +28,19 @@ const f1 = () => {
 // По нажатию b-2 выполняется функция f2. Функция с помощью find должна найти первый элемент массива a2, значение которого лежит от a2_from до a2_to (больше a2_from но меньше a2_to). Вывести элемент в out-2. Если значение не найдено то выводить false.
 
 let a2 = [13, 15, 22, 23, 26, 35, 72];
-let a2_from = 23
-let a2_to = 27;
+let a2_from = 234;
+let a2_to = 272;
 
 const f2 = () => {
-	let res = a2.find(item => {
-		if (item > a2_from && item < a2_to) {
-			return true
-		}
-	})
-	if (res === undefined) {
-		document.querySelector('.out-2').innerHTML = 'false'
-	} else {
-		document.querySelector('.out-2').innerHTML = res
-	}
+   let res = 'false';
+   res = a2.find(elem => {
+      if (elem > a2_from && elem < a2_to) {
+         return true;
+      }
+   });
+
+   if (res == undefined) res = false;
+   out2.innerHTML = res;
 }
 
 // TASK 03
@@ -46,13 +52,13 @@ let a3_to = 72;
 let a3_res = [];
 
 const f3 = () => {
-	let res = a3.filter(item => {
-		if (item > a3_from && item < a3_to) {
-			return true
-		}
-	})
-	a3_res = res
-	document.querySelector('.out-3').innerHTML = a3_res[0]
+   a3_res = a3.filter(elem => {
+      if (elem > a3_from && elem < a3_to) {
+         return true;
+      }
+   })[0];
+   out3.innerHTML = a3_res;
+
 }
 
 // TASK 04
@@ -64,13 +70,26 @@ let a4_from = 'k';
 let a4_to = 't';
 
 const f4 = () => {
+   const strToArray = str4.split('');
+   const fromIndex = strToArray.findIndex(elem => elem === a4_from);
+   let tempArray = strToArray.splice(fromIndex);
+   console.log('tempArray', tempArray);
+   const toIndex = tempArray.findIndex(elem => elem === a4_to);
+   let finalArray = tempArray.splice(0, toIndex + 1);
+   console.log('finalArray', finalArray);
 
-	const res = str4.split('').find(item => {
-		if (item > a4_from && item < a4_to) {
-			return true
-		}
-	})
-	document.querySelector('.out-4').innerHTML = res
+   out4.innerHTML = finalArray.find((elem, index) => {
+      if (elem > a4_from && elem < a4_to) return true;
+   })
+
+   // let charArr = str4.split('').map(elem => {
+   //    return elem.charCodeAt();
+   // })
+   // console.log(str4.split(''));
+   // console.log(charArr);
+   console.log('k', 'k'.charCodeAt());
+   console.log('t', 't'.charCodeAt());
+   console.log('found l', 'l'.charCodeAt());
 }
 
 // TASK 05
@@ -81,12 +100,9 @@ let a5_from = 23;
 let a5_to = 67;
 
 const f5 = () => {
-	let res = a5.findIndex(item => {
-		if (item > a5_from && item < a5_to) {
-			return true
-		}
-	})
-	document.querySelector('.out-5').innerHTML = res
+   out5.innerHTML = a5.findIndex(elem => {
+      if (elem > a5_from && elem < 67) return true;
+   });
 }
 
 // TASK 06
@@ -94,23 +110,15 @@ const f5 = () => {
 
 
 let a6 = [13, 15, 22, 23, 26, 35, 72];
-let a6_from = 23;
+let a6_from = 233;
 let a6_to = 67;
 
 const f6 = () => {
-	let b6 = [...a6]
-
-	let res = b6.reverse().findIndex((item, index) => {
-		if (item > a6_from && item < a6_to) {
-			return true
-		}
-	})
-
-	if (res === -1) {
-		document.querySelector('.out-6').innerHTML = 'false'
-	} else {
-		document.querySelector('.out-6').innerHTML = (b6.length - 1) - res
-	}
+   let res = a6.findIndex(elem => {
+      if (elem > a6_from && elem < a6_to) return true;
+   });
+   if (res === -1) res = false;
+   out6.innerHTML = res;
 }
 
 // TASK 07
@@ -121,13 +129,9 @@ let str7 = 'cccaBCcbBDabBddcCadcDbACacbbCdbBCADBDBdaAdcCd';
 let a7_1 = 'C'; // 43
 
 const f7 = () => {
-	let res = str7.toUpperCase().lastIndexOf(a7_1)
-	if (res === -1) {
-		document.querySelector('.out-7').innerHTML = -1
-	} else {
-		document.querySelector('.out-7').innerHTML = res
-	}
+   let res = str7.lastIndexOf(a7_1);
 
+   out7.innerHTML = res;
 }
 
 // TASK 08
@@ -137,19 +141,21 @@ let str8 = 'C#CdABd$d@$Ab!#@#bcAaB@c$D#@AD$A!b#!D!BB@CaAD@###@';
 let a8_1 = 'a'; // 43 ожидаю и на a и на A
 
 const f8 = () => {
-	let res = str8.toUpperCase().lastIndexOf(a8_1.toUpperCase())
-	document.querySelector('.out-8').innerHTML = res
+   let res = str8.toLocaleLowerCase().lastIndexOf(a8_1);
+
+   out8.innerHTML = res;
 }
 
 // TASK 09
 // По нажатию b-9 выполняется функция f9. Функция с помощью lastIndexOf должна найти наибольший индекс символа a9_1 в массиве a9, и вывести out-9. Если значение не найдено то выводить -1. 
 
-let a9 = ['2', '17', '45', '5', '14', '5', '45', '107'];
-let a9_1 = '5'; // ожидаю индекс 5
+let a9 = ['2', '17', '45', 5, '14', 5, '45', '107'];
+let a9_1 = 5; // ожидаю индекс 5
 
 const f9 = () => {
-	let res = a9.lastIndexOf(a9_1)
-	document.querySelector('.out-9').innerHTML = res
+   let res = a9.lastIndexOf(a9_1);
+
+   out9.innerHTML = res;
 }
 
 // TASK 10
@@ -160,13 +166,16 @@ let a11 = [0, 4, 22];
 let a10_res = []; // ожидаю [-2, -6];
 
 const f10 = () => {
-	a10_res = []
-	for (let i of a11) {
-		if (a10[i] !== undefined) {
-			a10_res.push(a10[i])
-		}
-	}
-	document.querySelector('.out-10').innerHTML = a10_res.join(' ')
+   // out10.innerHTML = a10.reduce((accum, item, index) => {
+   //    if (a11[index] <= a10.length) accum.push(item);
+   //    return accum;
+   // }, []);
+
+   //or
+   for (let item of a11) {
+      if (item < a10.length) a10_res.push(a10[item]);
+   }
+   out10.innerHTML = a10_res;
 }
 
 

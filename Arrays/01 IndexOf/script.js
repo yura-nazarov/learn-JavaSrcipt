@@ -2,16 +2,22 @@
 const a = [3, 9, 8, 7, 5, 3, 5, 2];
 const b = ['Hi', 'hello'];
 // -1
-console.table(a);
-console.log(a.indexOf(5,5));
+console.table('a', a);
+// проверка на существование элемента в массиве. Идёт строгое стравнение приведения типа данных
+// если элемент есть - возвратит индекс его первого вхождения, если нет - то "-1"
+// indexOf(elem, index) - elem какой элемент искать, index (не обязат.) с какого индекса включительно искать
+// если индекс отридцательный, то отсчёт идёт с конца. если -2, то будет поиск в последних двух элементах
+// но индекс будет возвращён обычный, порядковый
+console.log('a.indexOf(5,5)', a.indexOf(5, -2));
 
+// эмуляция indexOf
 function indexOfEmul(ar, item, from = 0) {
-    for (let i = from; i < ar.length; i++) {
-        if (ar[i] === item) {
-            return i;
-        }
-    }
-    return -1;
+   for (let i = from; i < ar.length; i++) {
+      if (ar[i] === item) {
+         return i;
+      }
+   }
+   return -1;
 }
 
-console.log(indexOfEmul(a, 5,5));
+console.log(indexOfEmul(a, 5, 5));

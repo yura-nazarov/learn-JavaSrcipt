@@ -1,3 +1,14 @@
+const out1 = document.querySelector('.out-1');
+const out2 = document.querySelector('.out-2');
+const out3 = document.querySelector('.out-3');
+const out4 = document.querySelector('.out-4');
+const out5 = document.querySelector('.out-5');
+const out6 = document.querySelector('.out-6');
+const out7 = document.querySelector('.out-7');
+const out8 = document.querySelector('.out-8');
+const out9 = document.querySelector('.out-9');
+const out10 = document.querySelector('.out-10');
+
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция с помощью concat объединяет массивы a1 и a1_1 в массив a1_res. Результирующий массив выводится в out-1 ( каждый элемент через пробел).
 
@@ -7,8 +18,8 @@ let a1_1 = [55, 66, 77];
 let a1_res;
 
 const f1 = () => {
-	a1_res = a1.concat(a1_1)
-	document.querySelector('.out-1').innerHTML = a1_res.join(' ')
+   a1_res = a1.concat(a1_1);
+   out01.textContent = a1_res.join(' ');
 }
 
 // TASK 02
@@ -16,11 +27,11 @@ const f1 = () => {
 
 let a2 = 'test'
 let a2_1 = 'best';
-let a2_res;
+let a2_res = '';
 
 const f2 = () => {
-	a2_res = a2.concat(a2_1)
-	document.querySelector('.out-2').innerHTML = a2_res
+   a2_res = a2.concat(a2_1);
+   out02.textContent = a2_res;
 }
 
 // TASK 03
@@ -29,11 +40,11 @@ const f2 = () => {
 
 let a3 = 'some_text';
 let a3_1 = [5, 7];
-let a3_res;
+let a3_res = '';
 
 const f3 = () => {
-	a3_res = a3.concat(a3_1)
-	document.querySelector('.out-3').innerHTML = a3_res
+   a3_res = a3.concat(a3_1);
+   out03.textContent = a3_res;
 }
 
 // TASK 04
@@ -45,33 +56,34 @@ let a4_1 = 'prime';
 let a4_res;
 
 const f4 = () => {
-	a4_res = a4.concat(a4_1)
-	document.querySelector('.out-4').innerHTML = a4_res.join(' ')
+   a4_res = a4.concat(a4_1);
+   out04.textContent = a4_res.join(' ');
 }
 
 // TASK 05
 // Напишите функцию f5 эмулятор concat. Функция должна принимать два аргумента массива и возвращать новый массив объединенный из этих двух. 
 
 const f5 = (ar1, ar2) => {
-	let res = []
-	for(let i of ar1) {
-		res.push(i)
-	}
-	for (let i of ar2) {
-		res.push(i)
-	}
-	return res
+   let res = ar2.reduce((accum, item) => {
+      ar1.push(item);
+      return accum;
+   }, ar1)
+   console.log(res);
+   return res;
 }
 
 // TASK 06
-// Напишите функцию f6 эмулятор concat. Функция должна принимать любое количество массивов как аргументы и возвращать новый массив объединенный из принятых. 
+// Напишите функцию f6 эмулятор concat. Функция должна принимать любое количество массивов как аргументы и возвращать новый массив объединенный из принятых.
 
-
-// для примера я написал 1, но тестировать буду с любым количеством
 const f6 = (...arg1) => {
-	let res = []
-	res.push(...arg1)
-	return res
+   let res = [];
+   arg1.reduce((accum, item) => {
+      res.push(item);
+      return accum;
+   }, res);
+
+   console.log(res);
+   return res;
 }
 
 // TASK 07
@@ -80,8 +92,8 @@ const f6 = (...arg1) => {
 let a7 = [3, -4, 5, -6, 7, 45, 67];
 
 const f7 = () => {
-	a7.splice(2, 3)
-	document.querySelector('.out-7').innerHTML = a7.join(' ')
+   let res = a7.splice(2, 3);
+   out07.textContent = a7.join(' ');
 }
 
 // TASK 08
@@ -92,8 +104,8 @@ n8 = 4;
 k8 = 3;
 
 const f8 = () => {
-	a8.splice(k8, n8)
-	document.querySelector('.out-8').innerHTML = a8.join(' ')
+   a8.splice(k8, n8);
+   out08.textContent = a8.join(' ');
 }
 
 
@@ -103,8 +115,8 @@ const f8 = () => {
 let a9 = [-2, 3, -4, 5, -6, 7]; // 105
 
 const f9 = () => {
-	a9.splice(0, 3, 7, 8)
-	document.querySelector('.out-9').innerHTML = a9.join(' ')
+   a9.splice(0, 3, 7, 8);
+   out09.textContent = a9.join(' ');
 }
 
 // TASK 10
@@ -117,15 +129,23 @@ let add = [999, 1000]
 
 // что хочу получить в результате работы функции - [-2, 3, 999,1000,  7]
 const f10 = (arr, from, num, add) => {
-	let count = 0
-	for (let i = from; i <= (from + num) - 1; i++) {
-		delete arr[i]
-			if (arr[i] == undefined) {
-				arr[i] = add[count]
-				count = count + 1
-			}	
-	}
-	return arr
+   let tempArr = [];
+   let tempIndex = 0;
+
+   for (let i = 0; i < arr.length; i++) {
+      if (i < from || i > num) {
+         tempArr[tempIndex++] = arr[i];
+         // tempIndex++;
+      }
+   }
+
+   add.reduce((accum, item) => {
+      tempArr.push(item);
+      return accum;
+   }, tempArr);
+
+   console.log(tempArr);
+
 }
 
 
@@ -135,14 +155,14 @@ document.querySelector('.b-2').addEventListener('click', f2);
 document.querySelector('.b-3').addEventListener('click', f3);
 document.querySelector('.b-4').addEventListener('click', f4);
 document.querySelector('.b-5').addEventListener('click', () => {
-    document.querySelector('.out-5').innerHTML = f5([3, 4, 5], [6, 7, 8]);
+   document.querySelector('.out-5').innerHTML = f5([3, 4, 5], [6, 7, 8]);
 });
 document.querySelector('.b-6').addEventListener('click', () => {
-    document.querySelector('.out-6').innerHTML = f6([2, 3], ['hi'], [6, 7, 8], [23, 5]);
+   document.querySelector('.out-6').innerHTML = f6([2, 3], ['hi'], [6, 7, 8], [23, 5]);
 });
 document.querySelector('.b-7').addEventListener('click', f7);
 document.querySelector('.b-8').addEventListener('click', f8);
 document.querySelector('.b-9').addEventListener('click', f9);
 document.querySelector('.b-10').addEventListener('click', () => {
-    document.querySelector('.out-10').innerHTML = f10(a10, from, num, add);
+   document.querySelector('.out-10').innerHTML = f10(a10, from, num, add);
 });

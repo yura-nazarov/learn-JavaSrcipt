@@ -6,7 +6,8 @@ let a1 = [5, 6, 7, 8, 44, 21, 43, 26, 78, 100, -2, 0, 17];
 let z1 = [];
 
 const f1 = () => {
-
+   z1 = a1.filter(item => (!(item % 2)));
+   console.log(z1);
 }
 
 // TASK 02
@@ -16,7 +17,8 @@ let a2 = [22, 33, 44, 55, 66, 77, 88, 99];
 let z2 = [];
 
 const f2 = () => {
-
+   z2 = a2.filter((item, index) => (!(index % 2)));
+   console.log(z2);
 }
 
 // TASK 03
@@ -27,7 +29,12 @@ let a3 = [2, 3, 4, 5, -6, 55, 1, 12, -3, 7, 4, 5, 2];
 let z3 = [];
 
 const f3 = () => {
-
+   let indx = [];
+   z3 = a3.filter((item, index) => {
+      if (index > 4) indx.push(index);
+      return indx;
+   });
+   console.log(indx);
 }
 
 // TASK 04
@@ -38,7 +45,8 @@ let a4 = [3, -2, 4, 1, '9', -3, '0', true, 2, -8, undefined];
 let z4 = [];
 
 const f4 = () => {
-
+   z4 = a4.filter(item => (typeof item !== 'number'))
+   console.log(z4);
 }
 
 // TASK 05
@@ -48,7 +56,11 @@ let a5 = [[4, 5], [6, 7, 8], [12, 5], [47, 3, 54, 62], [5]]; // ожидаю [[4
 let z5 = [];
 
 const f5 = () => {
+   z5 = a5.filter(elem => {
+      return elem.includes(5);
+   })
 
+   console.log(z5);
 }
 
 // TASK 06
@@ -58,23 +70,30 @@ let a6 = [[4, 5], [6, 7, 3], [12, 5], [47, 3, 54, 62], [5]]; // ожидаю [[6
 let z6 = [];
 
 const f6 = () => {
+   a6.filter(elem => {
+      if (elem.reduce((prev, curr) => prev + curr) % 2 === 0) z6.push(elem);
+   })
 
+   console.log(z6);
 }
 
 // TASK 07
 // По нажатию b-7 выполняется функция f7. Функция перебирает с помощью filter массив a7 и добавляет в z7 те объекты, пароль которых меньше или равен 6 символов. Результат выводится в консоль.
 
 let a7 = [
-	{ "user": "poprik", "pass": "a8b5442b9c" },
-	{ "user": "dobrik", "pass": "9665" },
-	{ "user": "kovrik", "pass": "DA06aA" },
-	{ "user": "shurik", "pass": "71b" },
-	{ "user": "zorik", "pass": "362617b302" }
+   { "user": "poprik", "pass": "a8b5442b9c" },
+   { "user": "dobrik", "pass": "9665" },
+   { "user": "kovrik", "pass": "DA06aA" },
+   { "user": "shurik", "pass": "71b" },
+   { "user": "zorik", "pass": "362617b302" }
 ];
 let z7 = [];
 
 const f7 = () => {
-
+   z7 = a7.filter(elem => {
+      return (elem.pass.length <= 6);
+   })
+   console.log(z7);
 }
 
 // TASK 08
@@ -85,7 +104,15 @@ let z8 = [];
 let z8_2 = [];
 
 const f8 = () => {
-
+   z8 = a8.filter(elem => {
+      if (elem % 2 === 0) {
+         return elem;
+      } else {
+         z8_2.push(elem);
+      }
+   })
+   console.log(z8);
+   console.log(z8_2);
 }
 
 // TASK 09
@@ -95,21 +122,36 @@ let a9 = [6, 7, 9];
 let z9 = {}; // {6 : 6, 7: 7, 9: 9}
 
 const f9 = () => {
-
+   for (key in a9) {
+      z9[a9[key]] = a9[key];
+   }
+   console.log(z9);
 }
 
 // TASK 10
 // // По нажатию b-10 выполняется функция f10. Функция перебирает объект a10 и создает новый объект z10 со значениямия которые по модулю больше 5. Связка ключ - значение сохраняется. Вывести результат в консоль.
 
-let a10 = { "hi": 5, "test": 2, "best": 12, "quest": -6 };
+let a10 = {
+   "hi": 5,
+   "test": 2,
+   "best": 12,
+   "quest": -6
+};
 let z10 = {}; // ожидаю {"best" : 12, "quest" : -6};
 
-const f10 = () => {
-
+const f10 = (arr, funCallback) => {
+   for (let key in arr) {
+      console.log('a10[key]', a10[key]);
+      if (funCallback(a10[key])) {
+         console.log('pass', a10[key]);
+         z10[key] = a10[key];
+      }
+   }
+   return z10;
 }
 
-function callback10() {
-
+function callback10(elem) {
+   if (Math.abs(elem) > 5) return true;
 }
 
 
@@ -123,5 +165,5 @@ document.querySelector('.b-7').addEventListener('click', f7);
 document.querySelector('.b-8').addEventListener('click', f8);
 document.querySelector('.b-9').addEventListener('click', f9);
 document.querySelector('.b-10').addEventListener('click', () => {
-	console.log(f10(a10, callback10))
+   console.log(f10(a10, callback10))
 });

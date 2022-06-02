@@ -1,5 +1,5 @@
 function inputNum(num) {
-	return document.querySelector(`.i-${num}`).value
+   return document.querySelector(`.i-${num}`).value
 }
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция считывает значение из i-1 и с помощью includes ищет данный элемент в массиве a1. Выводит в out-1 результат работы метода.
@@ -9,7 +9,8 @@ function inputNum(num) {
 let a1 = [4, 12, 4, 2, 15, 98];
 
 const f1 = () => {
-
+   const i = +document.querySelector('.i-1').value;
+   document.querySelector('.out-1').textContent = a1.includes(i);
 }
 
 // TASK 02
@@ -20,7 +21,13 @@ const f1 = () => {
 let a2 = [4, 12, 4, 2, 15, 98];
 
 const f2 = () => {
+   const i = +document.querySelector('.i-2').value;
 
+   if (a2.includes(i)) {
+      document.querySelector('.out-2').textContent = a2.indexOf(i);
+   } else {
+      document.querySelector('.out-2').textContent = false;
+   }
 }
 
 // TASK 03
@@ -31,7 +38,15 @@ const f2 = () => {
 let a3 = [[3, 4, 5], [6, 7, 1], [5, 6, 7, 1, 12], [134, 234, 432]];
 
 const f3 = () => {
+   const i = +document.querySelector('.i-3').value;
 
+   let out = false;
+   console.log(a3[0].includes(3));
+   a3.forEach(elem => {
+      console.log(elem);
+      if (elem.includes(i)) out = true;
+   })
+   document.querySelector('.out-3').textContent = out;
 }
 
 // TASK 04
@@ -41,8 +56,14 @@ const f3 = () => {
 let a4 = { a: [1, 2, 3], b: [3, 1, 5, 8], c: [88, 77, 66] };
 
 const f4 = () => {
+   const i = +document.querySelector('.i-4').value;
+   let out = '';
 
+   for (let key in a4) {
+      if (a4[key].includes(i)) out += key + ' ';
+   }
 
+   document.querySelector('.out-4').textContent = out || false;
 }
 // TASK 05
 // По нажатию b-5 выполняется функция f5. Функция считывает значение из i-5-1 и индекс с которого начинается поиск в массиве с i-5-2 и с помощью includes  ищет данный элемент в массиве a5 c позиции указанной в i-5-2. Выводит в out-5 false если такого элемента при поиске с указанной позиции нет и true если есть.
@@ -55,7 +76,9 @@ const f4 = () => {
 let a5 = [22, 33, 44, 55, 66, 77, 88, 33, 44, 55, 66, 77];
 
 const f5 = () => {
-
+   const i1 = +document.querySelector('.i-5-1').value;
+   const i2 = +document.querySelector('.i-5-2').value;
+   document.querySelector('.out-5').textContent = a5.includes(i1, i2);
 }
 
 // TASK 06
@@ -66,7 +89,9 @@ const f5 = () => {
 let a6 = ['Hi', 'wiFI'];
 
 const f6 = () => {
-
+   const i = document.querySelector('.i-6').value;
+   console.log(a6);
+   document.querySelector('.out-6').textContent = a6.includes(i);
 }
 
 // TASK 07
@@ -75,7 +100,14 @@ const f6 = () => {
 
 let a7 = [21, 22, 23, 24, 25, 26, 27];
 
-const f7 = (a,b)
+const f7 = (arr, value) => {
+   let res = false;
+
+   for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === value) res = true;
+   }
+   document.querySelector('.out-7').textContent = res;
+
 }
 
 // TASK 08
@@ -84,7 +116,10 @@ const f7 = (a,b)
 
 let a8 = 'JSbestever';
 
-const f8 
+const f8 = () => {
+   const i = document.querySelector('.i-8').value;
+
+   document.querySelector('.out-8').textContent = a8.includes(i);
 }
 
 // TASK 09
@@ -96,16 +131,36 @@ const f8
 
 let a9 = ['A', 'b', 'c', 'C', 'D', 12, 5, 'd', 1];
 
-const f9 
+const f9 = () => {
+   const i = document.querySelector('.i-9').value;
+   let res = false;
 
+   if (typeof i === 'string' && a9.includes(i)) res = true;
+
+   document.querySelector('.out-9').textContent = res;
 }
 
 // TASK 10
 // Ну и на прокачку ваших скиллов. Часто попадется вопрос, в чем отличие includes от indexOf? Ответ - в поведении с NaN. Изучите и запомните пример ниже.
 
-const a10 = [67, '55', 2, 5, '4', '8', 8, '66', '54', 11, NaN];
+const a10 = [67, '55', 2, 5, '4', '8', 8, '66', '54', 11, NaN, undefined];
 
-const f10 
+const f10 = () => {
+   // if (a10.indexOf(NaN) !== -1) {
+   //    // не выполнится
+   //    console.log('Сработал indexOf');
+   // }
+
+   // if (a10.includes(NaN)) {
+   //    // выполнится
+   //    console.log('Сработал includes');
+   // }
+   //or
+   console.log('includes(NaN)', a10.includes(NaN));// true
+   console.log('includes(undefined)', a10.includes(undefined));// true
+   console.log('indexOf(NaN)', a10.indexOf(NaN)); // !!!!!!!!не найдёт!!!!!!!!!!!!!!!
+   console.log('indexOf(undefined)', a10.indexOf(undefined)); // найдёт
+
 }
 
 // TASK 11
@@ -114,15 +169,15 @@ const f10
 const a11 = [[1, 2], { a: 1 }, true, '', [1], Infinity, undefined, null];
 
 const f11 = () => {
-	let c = [1, 2];
-	c = { a: 1 };
-	c = true;
-	c = '';
-	c = [1];
-	c = Infinity;
-	c = undefined;
-	c = null;
-	console.log(a11.includes(c));
+   let c = [1, 2];
+   c = { a: 1 };
+   c = true;
+   c = '';
+   c = [1];
+   c = Infinity;
+   c = undefined;
+   c = null;
+   console.log(a11.includes(c));
 }
 
 document.querySelector('.b-1').addEventListener('click', f1);
@@ -132,7 +187,7 @@ document.querySelector('.b-4').addEventListener('click', f4);
 document.querySelector('.b-5').addEventListener('click', f5);
 document.querySelector('.b-6').addEventListener('click', f6);
 document.querySelector('.b-7').addEventListener('click', () => {
-	f7(a7, 23);
+   f7(a7, 23);
 });
 document.querySelector('.b-8').addEventListener('click', f8);
 document.querySelector('.b-9').addEventListener('click', f9);

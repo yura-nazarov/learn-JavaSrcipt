@@ -1,5 +1,5 @@
 function inputNum(num) {
-	return document.querySelector(`.i-${num}`).value
+   return document.querySelector(`.i-${num}`).value
 }
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция считывает значение из i-1 и с помощью unShift добавляет полученную из input строку в массив a1. Функция выводит массив a1 в консоль и возращает массив a1.
@@ -8,7 +8,9 @@ function inputNum(num) {
 let a1 = ['hello', 't'];
 
 const f1 = () => {
-
+   const i = document.querySelector('.i-1').value;
+   a1.unshift(i);
+   console.log(a1);
 }
 
 // TASK 02
@@ -17,7 +19,9 @@ const f1 = () => {
 let a2 = ['b', 'c', 12, 34, 'dh', 17];
 
 const f2 = () => {
-
+   const i = document.querySelector('.i-2').value;
+   a2.unshift(i, i ** 2);
+   console.log(a2);
 
 }
 
@@ -28,7 +32,9 @@ const f2 = () => {
 let a3 = ['a', 'b'];
 
 const f3 = () => {
-
+   const i = document.querySelector('.i-3').value;
+   console.log(a3.unshift(i));
+   console.log(a3);
 }
 
 // TASK 04
@@ -38,7 +44,8 @@ const f3 = () => {
 let a4 = [14, 15, 16, 17, 18];
 
 const f4 = () => {
-
+   console.log(a4.shift());
+   console.log(a4);
 }
 
 // TASK 05
@@ -48,6 +55,7 @@ let a5 = [55, 66, 77, 88, 99, 129];
 
 const f5 = () => {
 
+   return a5.shift();
 }
 
 // TASK 06
@@ -57,8 +65,16 @@ const f5 = () => {
 let a6 = ['a', 'b', 'c', 'd', 'e', 'f'];
 
 
-const f6 = () => {
+const f6 = (elem) => {
+   let a = [];
+   // a6.reverse()
+   // a6.push(elem);
+   // a6.reverse()
+   //or
+   a6 = a.concat(elem, ...a6);
 
+   console.log(a6);
+   return a6.length;
 }
 
 // TASK 07
@@ -67,7 +83,9 @@ const f6 = () => {
 let a7 = [21, 22, 23, 24, 25, 26, 27];
 
 const f7 = () => {
-
+   a7.shift();
+   console.log(a7);
+   return a7.length;
 }
 
 // TASK 08
@@ -78,6 +96,7 @@ let a8 = [44, 45, 46, 47, 48, 49];
 
 const f8 = () => {
 
+   console.log(a8.slice(1, 4));
 }
 
 // TASK 09
@@ -86,6 +105,7 @@ const f8 = () => {
 let a9 = ['A', 2, 43, 12, 13, 14, 15, 16];
 
 const f9 = () => {
+   console.log(a9.slice(2));
 
 }
 
@@ -95,7 +115,7 @@ const f9 = () => {
 const a10 = [100, 2, 43, 12, 13, 14, 15, 16];
 
 const f10 = () => {
-	console.log(a10.slice(2, -2))
+   console.log(a10.slice(2, -2))
 }
 
 
@@ -104,15 +124,15 @@ document.querySelector('.b-2').addEventListener('click', f2);
 document.querySelector('.b-3').addEventListener('click', f3);
 document.querySelector('.b-4').addEventListener('click', f4);
 document.querySelector('.b-5').addEventListener('click', () => {
-	console.log(f5());
-	console.log(a5);
+   console.log(f5());
+   console.log(a5);
 });
 document.querySelector('.b-6').addEventListener('click', () => {
-	let elem = document.querySelector('.i-6').value;
-	console.log(f6(elem));
+   let elem = document.querySelector('.i-6').value;
+   console.log(f6(elem));
 });
 document.querySelector('.b-7').addEventListener('click', () => {
-	console.log(f7());
+   console.log(f7());
 });
 document.querySelector('.b-8').addEventListener('click', f8);
 document.querySelector('.b-9').addEventListener('click', f9);

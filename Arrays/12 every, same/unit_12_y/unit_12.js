@@ -1,3 +1,14 @@
+const out1 = document.querySelector('.out-1');
+const out2 = document.querySelector('.out-2');
+const out3 = document.querySelector('.out-3');
+const out4 = document.querySelector('.out-4');
+const out5 = document.querySelector('.out-5');
+const out6 = document.querySelector('.out-6');
+const out7 = document.querySelector('.out-7');
+const out8 = document.querySelector('.out-8');
+const out9 = document.querySelector('.out-9');
+const out10 = document.querySelector('.out-10');
+
 // TASK 01
 // По нажатию b-1 выполняется функция f1. Функция с помощью every проверяет, все элементы массива a1 больше a1_from и меньше a1_to (строго больше и строго меньше). Результат проверки вывести в out-1. 
 
@@ -7,12 +18,9 @@ let a1_from = 7;
 let a1_to = 100;
 
 const f1 = () => {
-	let rez = a1.every(item => {
-		if (item > a1_from && item < a1_to) {
-			return true
-		}
-	})
-	document.querySelector('.out-1').innerHTML = rez
+   out1.textContent = a1.every(elem => {
+      if (elem > a1_from && elem < 100) return true;
+   })
 }
 
 
@@ -24,35 +32,25 @@ let a2_from = 7;
 let a2_to = 100;
 
 const f2 = () => {
-	let rez = a2.every(item => {
-		if (item > a2_from && item < a2_to) {
-			return true
-		}
-	})
-	document.querySelector('.out-2').innerHTML = rez
+   out2.textContent = a2.every(elem => {
+      if (elem > a2_from && elem < a2_to) return true;
+   })
 }
 
 // TASK 03
 // По нажатию b-3 выполняется функция f3. Функция с помощью every проверяет, что сумма элементов каждого из вложенных массивов в массив a3 больше 20 (строго больше). Результат проверки вывести в out-3. 
 
 
-let a3 = [[5, 5, 11], [10, 10, 17]];
+let a3 = [[5, 5, 10], [10, 10, 17]];
 
 const f3 = () => {
-	let rez = a3.every(item => {
-		let sum = 0
-		for (let i of item) {
-			sum += i
-		}
-		if (sum > 20) {
-			return true
-		}
-	})
-	document.querySelector('.out-3').innerHTML = rez
+   out3.textContent = a3.every(elem => {
+      if (20 < elem.reduce((accum, item) => accum + item)) return true;
+   });
 }
 // В задаче 3 для вычисления суммы массива можно использовать вспомогательную доп. функцию которая считает сумму элементов.
 const summa = (arr) => {
-	// return ///
+   // return ///
 }
 
 // TASK 04
@@ -62,34 +60,30 @@ const summa = (arr) => {
 let a4 = [[100, 200], [300, 100, 400], [500, 700, 100, 800]];
 
 const f4 = () => {
-	let rez = a4.every(item => {
-		if (item.includes(100)) {
-			return true
-		}
-	})
-	document.querySelector('.out-4').innerHTML = rez
+   out4.textContent = a4.every(elem => elem.includes(100));
 }
 
 // TASK 05
 // По нажатию b-5 выполняется функция f5. Функция с помощью every проверяет, что все совершеннолетние пользователи (больше или равно 16 лет) провели оплату ( pay - true). Результат проверки вывести в out-5. 
 
 let a5 = [
-	{ "name": "Akemi", "age": 33, "pay": true },
-	{ "name": "Den", "age": 23, "pay": true },
-	{ "name": "Eiko", "age": 36, "pay": true },
-	{ "name": "Chieko", "age": 41, "pay": true },
-	{ "name": "Tadako", "age": 47, "pay": true },
-	{ "name": "Tomiko", "age": 15, "pay": false },
-	{ "name": "Utano", "age": 56, "pay": true }
+   { "name": "Akemi", "age": 33, "pay": true },
+   { "name": "Den", "age": 23, "pay": true },
+   { "name": "Eiko", "age": 36, "pay": true },
+   { "name": "Chieko", "age": 41, "pay": true },
+   { "name": "Tadako", "age": 47, "pay": true },
+   { "name": "Tomiko", "age": 152, "pay": true },
+   { "name": "Utano", "age": 56, "pay": true }
 ];
 
 const f5 = () => {
-	let rez = a5.every(item => {
-		if (item.age >= 16 && item.pay === true) {
-			return true
-		}
-	})
-	document.querySelector('.out-5').innerHTML = rez
+   out5.textContent = a5.every(elem => {
+      console.log(elem.age, elem.pay);
+      if (elem.age > 16 && elem.pay === true) {
+         return true;
+      }
+   });
+
 }
 
 // TASK 06
@@ -97,19 +91,14 @@ const f5 = () => {
 
 
 let a6 = [1, 4, 2, 6, 7, 3, 5, 2, 9];
-let a6_from = 1
+let a6_from = 1;
 
 const f6 = () => {
-	rez = () => {
-		for (let i of a6) {
-			if (i <= a6_from) {
-				return false
-			} else {
-				return true
-			}
-		}
-	}
-	document.querySelector('.out-6').innerHTML = rez()
+   let res = true;
+   a6.forEach(element => {
+      if (element < a6_from) res = false;
+   });
+   out6.textContent = res;
 }
 
 // TASK 07
@@ -120,16 +109,8 @@ let a7 = [10, 20, 30];
 let a7_from = 5;
 
 const f7 = () => {
-	let res = a7.every((item, index) => {
-		if (index == 2) {
-			a7.push(2);
-		}
-		// тут ваш if....
-		if (item > a7_from) {
-			return true
-		}
-	});
-	document.querySelector('.out-7').innerHTML = res;
+   out7.textContent = a7.every(elem => elem > a7_from);
+
 }
 
 // TASK 08
@@ -138,32 +119,28 @@ const f7 = () => {
 let a8 = [10, 4, 20, 6, 70, 30, 500, 2, 9];
 
 const f8 = () => {
-	let rez = a8.some(item => {
-		if (item > 100) { return true }
-	})
-	document.querySelector('.out-8').innerHTML = rez;
+   out8.textContent = a8.some(elem => elem > 100);
+
 }
 
 // TASK 09
 // Напишите функцию f9, которая запускается по кнопке b-9. Функция проверяет массив a9 с помощью some на наличие пользователей с возрастом меньше или равным 16. Результат выводит в out-9.
 
 let a9 = [
-	{ "name": "Ivan", "age": 34 },
-	{ "name": "Petro", "age": 24 },
-	{ "name": "Orest", "age": 45 },
-	{ "name": "Virii", "age": 35 },
-	{ "name": "Blamo", "age": 47 },
-	{ "name": "Vandeya", "age": 27 },
-	{ "name": "Inna", "age": 13 },
-	{ "name": "Gretta", "age": 25 },
-	{ "name": "Brianna", "age": 55 }
+   { "name": "Ivan", "age": 34 },
+   { "name": "Petro", "age": 24 },
+   { "name": "Orest", "age": 45 },
+   { "name": "Virii", "age": 35 },
+   { "name": "Blamo", "age": 47 },
+   { "name": "Vandeya", "age": 27 },
+   { "name": "Inna", "age": 13 },
+   { "name": "Gretta", "age": 25 },
+   { "name": "Brianna", "age": 55 }
 ];
 
 const f9 = () => {
-	let rez = a9.some(item => {
-		if (item.age <= 16) { return true }
-	})
-	document.querySelector('.out-9').innerHTML = rez;
+   out9.textContent = a9.some(elem => elem.age >= 16);
+
 }
 
 // TASK 10
@@ -172,15 +149,14 @@ const f9 = () => {
 let a10 = [10, 20, 30, 50, 60];
 let a10_from = 55;
 
-const isBigFrom = num => {
-	// где в качестве num вы передаете a10_from
-	if(num > a10_from) return true
-	return false
+const isBigFrom = elem => {
+   // где в качестве num вы передаете a10_from
+   console.log(elem);
+   return (elem >= a10_from) ? true : false;
 }
 
 const f10 = () => {
-	let rez = a10.some(isBigFrom)
-	document.querySelector('.out-10').innerHTML = rez;
+   out10.textContent = a10.some(isBigFrom);
 }
 
 
