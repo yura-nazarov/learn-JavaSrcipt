@@ -9,8 +9,9 @@ let a1 = ['hello', 't'];
 
 const f1 = () => {
    const i = document.querySelector('.i-1').value;
-   a1.push(i);
+   let b = a1.push(i);
    console.log(a1);
+   console.log(b);
 }
 
 // TASK 02
@@ -42,20 +43,24 @@ const f3 = () => {
 
 let a4 = [1, 2];
 let a4_1 = [
-   [5, 6]
+   [5, 6],
    [1, 2]
 ];
 
 let a4_2 = {
-   3: "asdfsadf",
-   3: "asdfasdf",
-   43: "asdfdasf"
+   3: "boot",
+   3: "cup",
+   43: "book"
 }
 
 const f4 = () => {
-
-   a4.push(a4_2);
+   a4_1.forEach(elem => {
+      elem.forEach(elem2 => {
+         a4.push(elem2);
+      })
+   })
    console.log(a4);
+
 }
 
 // TASK 05

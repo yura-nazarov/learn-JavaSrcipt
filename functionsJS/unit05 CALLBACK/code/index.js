@@ -33,13 +33,17 @@ f1(arr1, showArr2, out2);
 
 // пример коллбека
 
-function squad(item) {
+function callback(item) {
    return item ** 2;
 }
 
-// const arr2 = arr1.map(squad);
+// const arr2 = arr1.map(callback);
 // функцию выше переписываем с помощью стрелочной функцией
-const arr2 = arr1.map(item => item ** 2);
+// const arr2 = arr1.map(item => item ** 2);
+const arr2 = arr1.map(function callback(item) {
+   return item ** 10
+});
+
 console.log(arr2);
 showArr(arr2, out3);
 

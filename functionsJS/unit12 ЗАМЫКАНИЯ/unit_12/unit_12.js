@@ -2,6 +2,7 @@
 // Напишите анонимную функцию применяя замыкание. Внутри функции создайте переменную равную 75, и повесьте на кнопку .b-1 событие клик и функцию, которая увеличивает переменную на 1 и присваивает блоку .out-1 ширину равную переменной + 'px'. Анонимная функция замыкание должна запускаться при загрузке файла.
 (function () {
    let w = 75; // тут ваша переменная
+
    document.querySelector('.b-1').addEventListener('click', () => {
       w++;
       document.querySelector('.out-1').style.width = w + 'px';
@@ -23,13 +24,16 @@
       let w = 75;
       let h = 30;
       const out = document.querySelector('.out-2').style;
+
       function increment(count) {
          return ++count;
       }
+
       document.querySelector('.b-2-1').addEventListener('click', () => {
          w = increment(w);
          out.width = w + 'px';
       })
+
       document.querySelector('.b-2-2').addEventListener('click', () => {
          h = increment(h);
          out.height = h + 'px';
@@ -47,10 +51,11 @@ let count3 = (function () {
    }
 
 })();
+
 console.log(count3());
 console.log(count3());
 console.log(count3());
-console.log('END of task 3');
+console.log('============END of task 3');
 //or
 // function counter() {
 //    let count = 0;
@@ -78,21 +83,25 @@ let count4 = (
 
 console.log('count4(444)', count4(444));
 console.log('count4', count4());
-// console.log(count5(10000));// не сработает
+// console.log('count5(10000)', count5(10000));// не сработает
 
 
-function createCount(count = 0) {
+function createCount1(count = 0) {
    return function () {
       return count++;
    }
 }
-let count6 = createCount();
-let count7 = createCount(1000);
+let count6 = createCount1();
+let count7 = createCount1(12);
+count8 = createCount1;
+console.log('count8 = createCount1', count8 === createCount1);
 console.log('count6', count6());
 console.log('count6', count6());
-console.log('count7 = createCount(1000)', count7());
+console.log('count6', count6());
+console.log('count7 = createCount(1000)', count7(100));
 console.log('count7 = createCount(1000) ', count7());
-console.log('END of task 4');
+console.log('count8 = createCount ', count8(234243)());
+console.log('============END of task 4');
 
 
 // Task 5
@@ -109,7 +118,7 @@ function generatePassword(arr) {
 
 let password = generatePassword(['b', 'y', 'Y', 'b', 'z']);
 console.log('password()', password());
-console.log('END of task 5');
+console.log('============END of task 5');
 
 
 // Task 6
@@ -131,7 +140,7 @@ function generatePassword2(arr, n) {
 
 let password2 = generatePassword2(['b', 'y', 'Y', 'b', 'z'], 4);
 console.log(password2());
-console.log('END of task 6');
+console.log('============END of task 6');
 
 
 // Task 7
@@ -150,7 +159,7 @@ document.querySelector('.out-7').append(divCreator());
 document.querySelector('.out-7').append(divCreator());
 document.querySelector('.out-7').append(spanCreator());
 document.querySelector('.out-7').append(spanCreator());
-console.log('END of task 7');
+console.log('============END of task 7');
 
 // Task 8
 //  Напишите функцию замыкание createElement2, которая принимает 1 аргумент -  название тега (elem). Функция createElement2 должна возвращать функцию, которая через createElement создает elem и через innerHTML добавляет в него текст переданный в данную функцию как аргумент text. Созданный тег должен быть возвращен. 
@@ -168,7 +177,7 @@ document.querySelector('.out-8').append(divCreator2('ex1'));
 document.querySelector('.out-8').append(divCreator2('ex2'));
 document.querySelector('.out-8').append(spanCreator2('ex3'));
 document.querySelector('.out-8').append(spanCreator2('ex4'));
-console.log('END of task 8');
+console.log('============END of task 8');
 
 // Task 9
 // Напишите функцию замыкание generateDay, внутри которой создан массив days с именами дней недели и return анонимной функции, которая получает аргумент n и возвращает days[n-1] день недели. 
@@ -196,7 +205,7 @@ function generateDay() {
 const day = generateDay();
 console.log(day(2))
 console.log(day(3))
-console.log('END of task 9');
+console.log('============END of task 9');
 
 
 // Task 10
@@ -226,4 +235,4 @@ function generateMonth() {
 const month = generateMonth();
 console.log(month(2));
 console.log(month(3));
-console.log('END of task 10');
+console.log('============END of task 10');

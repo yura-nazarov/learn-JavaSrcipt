@@ -3,14 +3,14 @@
 
 function t1(n) {
    let out = '';
-   r1(n);
 
    function r1(z) {
       out += z + ' ';
       if (z == 0) return out;// можно без out
       r1(--z);
-
    }
+
+   r1(n);
    console.log(out);
    return out;
 }
@@ -25,13 +25,14 @@ document.querySelector('.b-1').addEventListener('click', () => {
 
 function t2(n) {
    let out = '';
-   r2(0);
 
    function r2(z) {
       if (z > n) return out; // можно без out
       out += z + ' ';
       r2(z + 2);
    }
+
+   r2(0);
    return out;
 }
 
@@ -57,8 +58,6 @@ function t3(arr) {
    } else {
       return t3(arr);
    }
-
-
    // or
    // if (rand % 2 === 0 && arr === 'even') return rand;
    // if (rand % 2 !== 0 && arr === 'odd') return rand;
@@ -136,7 +135,6 @@ function t6(arr) {
 }
 
 document.querySelector('.b-6').addEventListener('click', () => {
-
    document.querySelector('.out-6').textContent = t6(ar6);
 });
 
@@ -160,7 +158,7 @@ function t7(arr) {
    //    else if (Array.isArray(arr[key])) t7(arr[key]);
    // }
    arr.forEach(element => {
-      if (typeof element === 'string') {
+      if (typeof element !== 'string') {
          ar7_res.push(element);
       } else if (Array.isArray(element)) {
          t7(element);
@@ -171,7 +169,6 @@ function t7(arr) {
 }
 
 document.querySelector('.b-7').addEventListener('click', () => {
-
    document.querySelector('.out-7').textContent = t7(ar7);
 });
 
@@ -291,15 +288,18 @@ let ar10 = {
 }
 
 let ar10_res = [];
-
+console.log(ar10.ivanov.age);
+console.log(!!('age' in ar10.ivanov));
 function t10(k, obj) {
+   // if (!!('age' in obj.k)) console.log('undefinedundefinedundefined', k);
+   console.log('before for', 'k:', k, 'obj[k]:', obj[k], 'obj:', obj);
    for (key in obj) {
-      if (key === 'age') {
-         ar10_res.push(k);
-      } else if (obj === 'object') {
-         return t10(key, obj[key]);
-      }
+      console.log('after for', 'key:', key, 'obj[key]:', obj[key], 'obj:', obj);
+      if (key === 'age') { ar10_res.push(k); console.log('in if', k); }
+      // if (!!('age' in obj.key)) { ar10_res.push(k); console.log('in if', k); }
+      else if (typeof obj[key] === 'object') t10(key, obj[key]);
    }
+
    return ar10_res;
 }
 
@@ -307,6 +307,7 @@ document.querySelector('.b-10').addEventListener('click', () => {
    for (let key in ar10) {
       t10(key, ar10[key]);
    }
+
    document.querySelector('.out-10').innerHTML = ar10_res;
 });
 

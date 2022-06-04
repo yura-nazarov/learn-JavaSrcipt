@@ -144,6 +144,6 @@ function t8() {
    return sum1;
 }
 
-let s = t8();
+let s = t8;
 console.log(s);
 console.log(s([20, 30]));

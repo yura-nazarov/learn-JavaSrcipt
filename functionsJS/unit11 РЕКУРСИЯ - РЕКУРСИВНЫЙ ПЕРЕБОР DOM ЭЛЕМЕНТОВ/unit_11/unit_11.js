@@ -3,17 +3,19 @@
 
 function t1(elem) {
    let out = '';
-   r1(elem);
 
    function r1(element) {
       out += element.tagName + ' ';
+      console.log('element.tagName', element.tagName, 'element', element);
       // out += element.localName + ' ';
       let elemChildren = element.children;
       Array.from(elemChildren).forEach(item => {
-         console.log(item);
+         console.log('in forEach item:', item);
          r1(item);
       });
    }
+
+   r1(elem);
    return out;
 }
 
@@ -27,7 +29,6 @@ document.querySelector('.b-1').addEventListener('click', () => {
 
 function t2(elem) {
    let s = 0;
-   r2(elem);
 
    function r2(element) {
       if (!isNaN(element.outerText)) {
@@ -41,6 +42,7 @@ function t2(elem) {
       Array.from(elementChildren).forEach(item => r2(item));
    }
 
+   r2(elem);
    return s;
 }
 

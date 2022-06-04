@@ -58,7 +58,7 @@ function showSum3(x, y, elem = '.out-1') {
    console.log(arguments);
    document.querySelector(elem).textContent = arguments[0] + y;
 }
-showSum3(0, 6, '.out-2',);
+showSum3(0, 6, '.out-2');
 
 function showSomeAll() {
    console.log(arguments);
@@ -81,7 +81,7 @@ function showSumAll2(...args) {
 
 showSumAll2(5, 5, 10, 20, 30);
 
-// функция как аргумент
+// // функция как аргумент
 
 function showAll(res) {
    document.querySelector('.out-1').innerHTML = `<b>${res}</b>`
@@ -95,6 +95,7 @@ function showAll(res) {
 
 // использовать неопределённое количество параметров
 // ОБЯЗАТЕЛЬНЫЙ аргумент нужно поставить на первое место
+// не обязательный на самое последнее место
 // но две функции с одинаковым названием но разным порядком аргументов, могут не срабатывать
 function showSumAll3(drawFunction, ...num) {
    drawFunction(num);

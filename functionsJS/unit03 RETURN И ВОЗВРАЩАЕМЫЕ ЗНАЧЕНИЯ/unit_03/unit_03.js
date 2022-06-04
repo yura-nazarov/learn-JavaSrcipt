@@ -10,7 +10,6 @@ document.querySelector('.b-1').addEventListener('click', function () {
 })
 
 
-
 // Task 2.
 
 //Напишите функцию t2, которая принимает 2 аргумента и возвращает больший из них. 
@@ -200,9 +199,9 @@ function t12(...rest) {
    // sum = rest.reduce((prev, curr) => {
    //    return prev + curr;
    // })
+   // return sum;
    // or
    return rest.reduce((prev, curr) => prev + curr);
-   return sum;
 }
 
 document.querySelector('.b-12').addEventListener('click', function () {
@@ -328,7 +327,7 @@ function t21(s) {
    }
    console.log('before pereat', s);
    // повторный вызов этой же функции, до тех пор пока не удовлетворит условию
-   t21(s);
+   return t21(s);
    // or
    // console.log(res);
    // switch (s) {
@@ -388,12 +387,14 @@ document.querySelector('.b-23').addEventListener('click', function () {
 const ar24 = [3, 4, 5, 6, 7, 8];
 
 function t24() {
-   let t = [];
-   ar24.forEach(item => {
-      let newItem = callback24(item);
-      t.push(newItem);
-   });
-   return t;
+   // let t = [];
+   // ar24.forEach(item => {
+   //    let newItem = callback24(item);
+   //    t.push(newItem);
+   // });
+   // return t;
+   return ar24.map(callback23);
+
 }
 
 function callback24(item) {
@@ -469,12 +470,12 @@ document.querySelector('.b-27').addEventListener('click', function () {
 
 function t28(str, substr) {
    console.log(str.indexOf(substr));
-   return (str.indexOf(substr) >= 1) ? true : false;
+   return (str.indexOf(substr) >= 0) ? true : false;
 
 }
 
 document.querySelector('.b-28').addEventListener('click', function () {
-   document.querySelector('.out-28').textContent = t28('hello my world', 'wor');
+   document.querySelector('.out-28').textContent = t28('hello my world', 'hel');
 })
 
 // Task 29

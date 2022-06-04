@@ -1,18 +1,4 @@
-// const browser = [
-//    ['IE', 2],
-//    ['Edge', 1],
-//    ['Firefox', 2],
-//    ['Chrome', 1],
-//    ['Safari', 1],
-//    ['Opera', 1],
-//    ['Opera Mini', 0],
-//    ['Opera Mobile', 0],
-//    ['Chrome for Android', 1],
-//    ['Firefox for Android', 2],
-//    ['UC Browser', 2],
-// ]
-
-// push
+// ************** push ***************
 let a = [99, 88];
 // console.log(a);
 // a[0] = 66;
@@ -32,7 +18,7 @@ let a = [99, 88];
 
 // console.log(a);
 
-// pop
+// *************** pop **************
 // a.pop();
 // console.log(a);
 // console.log(a.pop());

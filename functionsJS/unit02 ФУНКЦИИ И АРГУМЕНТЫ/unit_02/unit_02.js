@@ -3,31 +3,13 @@
 const out1 = document.querySelector('.out-1');
 
 function t1(min, max) {
-   out1.textContent = min + Math.floor(Math.random() * (max + 1 - min));
-   // ниже при какаких минимальных и максимальных рандомных значениях будут выпадать
-   // наши минимальные и максимальные значения.
-   // Распределение не нормальное, не однородное. шанс выпадать меньше 0.001 - мала
-   // так же как и выпадать больше 0.999 - тоже мала. Шанс получить min и max = 0.
-   // let minCount = 0, maxCount = 0;
-   // minCount = 100 + (0.001 * (200 + 1 - 100));
-   // maxCount = 100 + (0.999 * (200 + 1 - 100));
-   // for (let i = 0; i < 200000; i++) {
-   //  !!!!!!!!!из 200,000 попыток выпало 0 совпадений с min и max.!!!!!!!!!!!!!!
-   //    out1.textContent = min + Math.floor(Math.random() * (max + 1 - min));
-   //    if (out1.textContent === min) minCount++;
-   //    if (out1.textContent === max) maxCount++;
-   // }
-   // console.log(minCount);
-   // console.log(Math.floor(minCount));
-   // console.log(maxCount);
-   // console.log(Math.floor(maxCount));
+   out1.textContent = Math.floor(Math.random() * (max + 1 - min) + min);
    return +out1.textContent;
 }
 
 document.querySelector('.b-1').addEventListener('click', function () {
    t1(120, 140);
 })
-
 
 
 // Task 2.
@@ -60,11 +42,11 @@ document.querySelector('.b-3').addEventListener('click', function () {
 // Напишите функцию t4, которая делит число a на b и результат выводит в out-4. Если b равно нулю, то в out-4 выводится аргумент c.
 
 function t4(a, b, c) {
-   (b != 0) ? document.querySelector('.out-4').textContent = a / b : document.querySelector('.out-3').textContent = document.querySelector('.out-4').textContent = c;
+   return (b != 0) ? a / b : c;
 }
 
 document.querySelector('.b-4').addEventListener('click', function () {
-   t4(7, 0, false);
+   document.querySelector('.out-4').textContent = t4(7, 0, false);
 })
 
 
@@ -72,7 +54,7 @@ document.querySelector('.b-4').addEventListener('click', function () {
 // Напишите функцию t5, которая делит число a на b и результат выводит в out-5. Если b равно нулю, то в out-5 выводится аргумент c, который по умолчанию равен нулю.
 
 function t5(a, b, c = 0) {
-   (b != 0) ? document.querySelector('.out-5').textContent = a / b : document.querySelector('.out-5').textContent = document.querySelector('.out-5').textContent = c;
+   (b != 0) ? document.querySelector('.out-5').textContent = a / b : document.querySelector('.out-5').textContent = c;
 }
 
 document.querySelector('.b-5').addEventListener('click', function () {

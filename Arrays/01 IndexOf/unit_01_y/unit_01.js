@@ -6,13 +6,10 @@
 let a1 = [4, 12, 4, 2, 15, 98];
 
 const f1 = () => {
-   let out = '';
    const i1 = +document.querySelector('.i-1').value;
 
    document.querySelector('.out-1').textContent = a1.indexOf(i1);
-
 }
-
 
 
 // TASK 02
@@ -50,8 +47,6 @@ const f3 = () => {
    const i = +document.querySelector('.i-3').value;
 
    out.textContent = (arr.indexOf(i) + 1) ? true : false;
-
-
 }
 
 
@@ -68,9 +63,6 @@ const f4 = (arr, i) => {
 
    out.textContent = arr.indexOf(i);
 }
-
-
-
 
 
 // TASK 05
@@ -122,7 +114,8 @@ const f7 = (arr, elem) => {
    for (let i = 0; i < arr.length; i++) {
       if (arr[i] === +elem) {
          document.querySelector('.out-7').innerHTML = i;
-         break;
+         return;
+         // break;
       }
       document.querySelector('.out-7').innerHTML = -1;
    }
@@ -146,7 +139,6 @@ const f8 = () => {
       position = a8.indexOf(value, position + 1);
       res08.push(position);
    }
-
 
    // res08 = position;
    document.querySelector('.out-8').innerHTML = res08;

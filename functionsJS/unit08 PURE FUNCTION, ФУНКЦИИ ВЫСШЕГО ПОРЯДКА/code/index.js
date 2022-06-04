@@ -1,7 +1,10 @@
 /*
 // Pure функции
 // возвращают значения (результат) кот-е зависят только от входящих параметров
-// такая функция будет более лёгкой для отлова ошибок
+// и не зависит от внешних факторов.
+// Чистую ф. можно запускать многократно и получать одинаковый рез-т, не изменяющий состояние нашей системы
+
+// такая функция будет более лёгкой для отлова ошибок (тестирования кода)
 function squad(n) {
    return n ** 2;
 }
@@ -23,9 +26,10 @@ function squad3(n) {
 squad3(6);
 
 // ex 2
-let count = 0;
+
 // эта ф-я зависит от внешних переменных. Это уже потенциальные ошибки
 // это не чистая функция
+let count = 0;
 function myCount() {
    return count++;
 }
@@ -83,8 +87,10 @@ function show(d) {
 show('show', 4444);
 
 
-// функции высшего порядка
-// это фун-я которая может принять функцию и возвратить функцию
+// ******************** функции высшего порядка *****************
+
+// это фун-я которая может принять функцию в виде аргумента и возвратить функцию
+
 //ex 7
 function hello() {
    console.log('hello');
@@ -94,6 +100,7 @@ console.log(hello);
 hello.hi = 123;
 console.log('after hello.hi = 123', hello);
 console.log('hello.hi', hello.hi);
+
 
 //ex 8
 function pOdd() {
@@ -142,6 +149,7 @@ w1 = w.filter(item => (item.age >= 26));
 console.log(w1);
 */
 
+// unit 09 - практика
 // bit example
 
 const user = {
@@ -194,6 +202,7 @@ function createValidater(...tests) {
    }
 }
 
+// ниже функции высшего порядка
 const validator1 = createValidater(checkAge, checkPassword, checkTerms);
 const validator2 = createValidater(checkAge, checkPassword);
 

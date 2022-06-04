@@ -19,7 +19,7 @@ let a1_res;
 
 const f1 = () => {
    a1_res = a1.concat(a1_1);
-   out01.textContent = a1_res.join(' ');
+   out1.textContent = a1_res.join(' ');
 }
 
 // TASK 02
@@ -31,7 +31,7 @@ let a2_res = '';
 
 const f2 = () => {
    a2_res = a2.concat(a2_1);
-   out02.textContent = a2_res;
+   out2.textContent = a2_res;
 }
 
 // TASK 03
@@ -44,7 +44,7 @@ let a3_res = '';
 
 const f3 = () => {
    a3_res = a3.concat(a3_1);
-   out03.textContent = a3_res;
+   out3.textContent = a3_res;
 }
 
 // TASK 04
@@ -57,7 +57,7 @@ let a4_res;
 
 const f4 = () => {
    a4_res = a4.concat(a4_1);
-   out04.textContent = a4_res.join(' ');
+   out4.textContent = a4_res.join(' ');
 }
 
 // TASK 05
@@ -79,7 +79,6 @@ const f6 = (...arg1) => {
    let res = [];
    arg1.reduce((accum, item) => {
       res.push(item);
-      return accum;
    }, res);
 
    console.log(res);
@@ -92,8 +91,8 @@ const f6 = (...arg1) => {
 let a7 = [3, -4, 5, -6, 7, 45, 67];
 
 const f7 = () => {
-   let res = a7.splice(2, 3);
-   out07.textContent = a7.join(' ');
+   a7.splice(2, 3);
+   out7.textContent = a7.join(' ');
 }
 
 // TASK 08
@@ -105,7 +104,7 @@ k8 = 3;
 
 const f8 = () => {
    a8.splice(k8, n8);
-   out08.textContent = a8.join(' ');
+   out8.textContent = a8.join(' ');
 }
 
 
@@ -116,7 +115,7 @@ let a9 = [-2, 3, -4, 5, -6, 7]; // 105
 
 const f9 = () => {
    a9.splice(0, 3, 7, 8);
-   out09.textContent = a9.join(' ');
+   out9.textContent = a9.join(' ');
 }
 
 // TASK 10
@@ -158,7 +157,7 @@ document.querySelector('.b-5').addEventListener('click', () => {
    document.querySelector('.out-5').innerHTML = f5([3, 4, 5], [6, 7, 8]);
 });
 document.querySelector('.b-6').addEventListener('click', () => {
-   document.querySelector('.out-6').innerHTML = f6([2, 3], ['hi'], [6, 7, 8], [23, 5]);
+   document.querySelector('.out-6').innerHTML = f6([2, 3], ['Hi'], [6, 7, 8], [23, 5]);
 });
 document.querySelector('.b-7').addEventListener('click', f7);
 document.querySelector('.b-8').addEventListener('click', f8);

@@ -14,6 +14,7 @@ let d = [22, 33, 44, 55, 66, 77, 88, 99];
 let d1 = '23456789'
 let f = d.slice(3); // [66, 77, 88, 99]
 console.log('d.slice(3)', d.slice(3)); //[66, 77, 88, 99]
+console.log('f', f); //[66, 77, 88, 99]
 console.log('d.slice(-1)', d.slice(-1)); //[99]
 console.log('d.slice(1, -1)', d.slice(1, -1)); //[33, 44, 55, 66, 77, 88]
 console.log('d.slice(-1, -1)', d.slice(-1, -1)); //[]

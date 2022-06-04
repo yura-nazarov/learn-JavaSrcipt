@@ -132,7 +132,6 @@ let a10_res = [];
 
 const f10 = () => {
    out10.textContent = Object.keys(a10).join(' ');
-
 }
 
 

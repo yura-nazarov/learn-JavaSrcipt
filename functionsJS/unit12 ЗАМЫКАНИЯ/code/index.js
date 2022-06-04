@@ -57,32 +57,37 @@ const constStep = function step() {
 
 // Шаг 1
 // Берём функцию выше и...
-/*
-let count = 0;
-function step0() { // изменим имя функции
-   count++;
-   console.log(count);
-}
-*/
+
+// let count = 0;
+// function step0() { // изменим имя функции
+//    count++;
+//    console.log(count);
+// }
+
+
 // Шаг 2
 // оборачиваем её в другую функцию. Нужно дать имя новой функции.
-function ttt() {
+function ttt11() {
    let count = 0;
-   step0();
+   // step0();
    function step0() {
       count++;
-      console.log(count);
+      console.log('count ttt11', count);
    }
 }
+
 // выполним эту функцию
-// let z = ttt(); // посчитает один каунт 1
+// let z21 = ttt(); // посчитает один каунт 1
+let z21 = ttt11()
+z21;
+// z();// попытаемся выполнить - получим ошибку, т.к. z - не фун-ия
 
-// console.log(z);// undefined
-// console.log(z());// попытаемся выполнить - получим ошибку, т.к. z - не фун-ия
+// console.log(z21);// undefined т.к. ф. ttt11() ничего не возвращает
 
-// но сейчас, мы не можем выполнить функцию step0, кото-ая внутри функции ttt
+
+// но сейчас, мы не можем выполнить функцию step0, кото-ая внутри функции ttt11
 // step0(); // ошибка
-// ttt(); // т.к. внутри этой функции мы не вызывали ф-ию step0, то мы ни чего и не получили.
+ttt11(); // сработает
 
 // Шаг 3.
 // напишем запуск фу-ии step1 внутри ttt
@@ -91,11 +96,14 @@ function ttt() {
    step0();
    function step0() {
       count++;
-      console.log(count);
+      console.log('ttt', count);
    }
 }
-// теперь эта функция запуститься из стоки let z = ttt();,
-// можно запускать функция вызывая её как z
+
+// теперь эта функция запуститься из строки let z = ttt();,
+let z22 = ttt(); // запуститься
+// z22; // не сработает
+// console.log(z22); // undefined
 // ttt(); // запуститься один раз счётчик и выведет 1
 
 // Шаг 4.
@@ -158,15 +166,17 @@ function createStep2(n = 0) {
    return function () {
       count++;
       console.log(count);
-      // return count; ошибка
+      return count; // можно возвратить count, это будет тоже самое что и возвращает функция 
    }
 }
 // в одну переменнную передадим агрумент в другую - нет. Результаты будут разные этих переменных.
 // но мы не можем передавать аргументы в ф.  newStep3. Что бы передавать агрументы, добавим аргумент в возвращаемую функцию
 let newStep3 = createStep2();
 let newStep4 = createStep2(200);
-// newStep3(100); // 1
-// newStep4(); // 201
+newStep3(100); // 1
+newStep4(); // 201
+console.log('newStep3()', newStep3());
+console.log('newStep4()', newStep4());
 // newStep3(); // 2
 // newStep4(); // 202
 // let step3 = createStep2(10);
@@ -247,30 +257,26 @@ let begg2 = createBeggar();
 
 let p;
 
+function btn(x, n) {
+   return function pow() {
+      if (n == 1) {
+         return x;
+      } else {
+         return pow(x, n - 1);
+      }
+   }
+}
 
+document.querySelector('.b-3').addEventListener('click', () => {
+   document.querySelector('.out-1').textContent = btn(2, 1);
+})
 
-
-
-// function btn(x, n) {
-//    return function pow() {
-//       if (n == 1) {
-//          return x;
-//       } else {
-//          return pow(x, n - 1);
-//       }
+// function () {
+//    let p = 10;
+//    let q = document.querySelector('.b-1');
+//    q.onclick = () => {
+//       console.log('work q 1');
+//       p = p + 1;
+//       console.log(p);
 //    }
 // }
-
-// document.querySelector('.b-3').addEventListener('click', () => {
-//    document.querySelector('.out-1').textContent = btn(2, 1);
-// })
-
-// // function () {
-// //    let p = 10;
-// //    let q = document.querySelector('.b-1');
-// //    q.onclick = () => {
-// //       console.log('work q 1');
-// //       p = p + 1;
-// //       console.log(p);
-// //    }
-// // }

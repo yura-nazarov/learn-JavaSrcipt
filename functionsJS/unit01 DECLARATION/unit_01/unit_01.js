@@ -71,10 +71,6 @@ function t4_1() {
 document.querySelector('.b-4').addEventListener('click', t4_1);
 // тут ваша функция t4_1
 
-// document.querySelector('.b-4').addEventListener('click', t4_1);
-
-
-
 // Task 5
 // Устали? У нас есть две функции. Одна even, вторая odd. Напишите функцию t5, которая получает из input.i-5 число, проверяет его на четность и запускает even если число четное и odd если нет.
 
@@ -174,7 +170,9 @@ document.querySelector('.b-8').addEventListener('click', t8);
 let z9 = 5;
 const s9 = document.querySelector('.s-9');
 const o9 = s9.querySelectorAll('.o-9');
-
+console.log([...s9]);
+console.log([...o9]);
+console.log([...o9] === [...s9]);
 function t9() {
    s9.value = z9;
    //or
@@ -186,7 +184,6 @@ function t9() {
 }
 
 document.querySelector('.b-9').addEventListener('click', t9);
-
 
 
 // Task 10

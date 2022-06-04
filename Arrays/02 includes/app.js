@@ -24,14 +24,13 @@ const users = [
 
 // для поиска в таком массиве, нужно перевести цифры в строку
 console.log(typeof users[1].age.toString());
-string = users[1].age.toString();
+string = users[2].age.toString();
 if (string.includes(14)) {
    console.log('yes');
 }
 else {
    console.log('no');
 }
-
 
 let newUsers = users.filter(item => {
    return item.name.includes('ov');

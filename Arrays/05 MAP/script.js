@@ -9,7 +9,7 @@ let b = a.map((item, index) => {
 // console.log(b); // размерность сохранилась, не смотря на пропуски эл-то 8 и 9
 
 a1 = [22, 333, 444]
-
+// изменим наш исходный массив a1 в ходе выполнения метода
 let b1 = a1.map((item, index, array) => {
    if (index == 2) {
       array[index + 1] = 66; // добавит элемент в конец массива a1
@@ -30,6 +30,7 @@ let c = a.filter((item, index) => {
 
 // console.log(c);
 
+// убираем пробелы и в нижний регистр
 const z = [
    { "name": '  Ivan ', 'order': 12, 'sum': '123,5' },
    { "name": 'Ivan2    ', 'order': 12, 'sum': '123.5' },

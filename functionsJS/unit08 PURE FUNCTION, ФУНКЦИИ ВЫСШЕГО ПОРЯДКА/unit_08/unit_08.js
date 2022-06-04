@@ -44,21 +44,27 @@ document.querySelector('.b-4').addEventListener('click', () => {
 // Давайте напишем pure функцию t5, которая проверяет наличие элемента класс которой передан ей как аргумент (например '.out-5') на странице и возвращает true или false. Функция запускается по кнопке .b-5. 
 
 const t5 = (block) => {
-   return (!!document.querySelector(block));
+   console.log(document.querySelector(block));
+   return (!document.querySelector(block));
 }
 document.querySelector('.b-5').addEventListener('click', () => {
-   document.querySelector('.out-5').textContent = t5('.out-5');
+   document.querySelector('.out-5').textContent = t5('.out-52');
 })
 
 // Task 6
 // Давайте напишем pure функцию t6, которая получает массив и возвращает его развернутым на 180 градусов ( чистый аналог reverse ). Функция запускается по кнопке .b-6. Для проверки - выводите результат на страницу, через пробел.
 
 const t6 = (arr) => {
-   let newArr = [];
-   for (let i = 0; i < arr.length; i++) {
-      newArr[arr.length - 1 - i] = arr[i];
-   }
-   return newArr;
+   // let newArr = [];
+   // for (let i = 0; i < arr.length; i++) {
+   //    newArr[arr.length - 1 - i] = arr[i];
+   // }
+   // return newArr;
+   // or
+   return arr.reduce((accum, item) => {
+      accum.unshift(item);
+      return accum;
+   }, [])
    // or
    // return arr.reverse().join();
 }

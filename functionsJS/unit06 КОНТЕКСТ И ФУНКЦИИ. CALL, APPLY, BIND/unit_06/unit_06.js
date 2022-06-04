@@ -2,10 +2,12 @@
 // Запустите функцию t1, с контекстом out-1 с помощью call. Функция должна запускаться при загрузке страницы.
 
 function t1() {
-   this.textContent = 'work';
+   this.textContent = 'work22';
 }
-t1.call(document.querySelector('.out-1'));
-// document.querySelector('.out-1').addEventListener('click', t1);
+
+window.addEventListener('load', () => {
+   t1.call(document.querySelector('.out-1'));
+});
 // тут прописываете запуск
 
 // Task 2
@@ -35,24 +37,33 @@ document.querySelector('.b-4').addEventListener('click', () => {
 // Task 5
 // Напишите функцию t5, проверяет что у элемента на котором она была вызвана свойство textContent не равно undefined. Возвращает true или false
 
-function t5() {
-   console.log(this.textContent === 'undefined');
+function t5(text) {
+   this.textContent = text;
+   console.log(this.textContent = text);
 }
-document.querySelector('.i-5').value = 'undefined';
-document.querySelector('.out-5').textContent = 'undefined';
-console.log(t5.call(document.querySelector('.i-5')));
-console.log(t5.call(document.querySelector('.out-5')));
+document.querySelector('.i-5').addEventListener('change', () => {
+   if (document.querySelector('.i-5').value == 'undefined') {
+      t5.call(document.querySelector('.out-5'), true);
+      console.log(t5.call(document.querySelector('.i-5')));
+      console.log('check', t5.call(document.querySelector('.out-5')));
+   } else {
+      t5.call(document.querySelector('.out-5'), document.querySelector('.i-5').value);
+   }
+})
 
 
 // Task 6
 //Запустите функцию t1, с контекстом out-6 с помощью apply. Функция должна запускаться при загрузке страницы.
-t1.apply(document.querySelector('.out-6'));
+
+window.addEventListener('load', () => {
+   t1.apply(document.querySelector('.out-6'));
+});
 // тут прописываете запуск
 
 // Task 7
 // Запустите функцию max с аргументами 5, 8 и контекстом out-7. Функция должна запускаться при загрузке страницы. Используем apply.
 
-window.addEventListener('load', () => {
+document.querySelector('.b-7').addEventListener('click', () => {
    max.apply(document.querySelector('.out-7'), [3, 5]);
 })
 
@@ -64,10 +75,12 @@ let ar8 = [45, 23, 21];
 
 // out8.textContent = Math.max.apply(null, ar8);
 // or
+// используя сво-во apply то что оно разбивает аргументы из массива на числа
+// используя ф. Math.max - находим максимум из массива
 out8.textContent = Math.max.apply(undefined, ar8);
 
-console.log(Math.max(22, 33, 1, 2, 33, 44, 55, 1, 100, 45));
-console.log(Math.max(33, 1, 2));
+// console.log('Math.max', Math.max(22, 33, 1, 2, 33, 44, 55, 1, 100, 45));
+// console.log('Math.max', Math.max(33, 1, 2));
 
 // Task 9
 // По нажатию на кнопку b-9 запускается анонимная функция, которая через apply передает функции t9 контекст out-9 и массив ar9 элементов. Функция t9 должна вывести максимальный элемент массива.
@@ -79,7 +92,6 @@ function t9(...arr) {
 }
 
 document.querySelector('.b-9').addEventListener('click', () => {
-   // t9.apply(document.querySelector('.out-9'), ar9);
    t9.apply(document.querySelector('.out-9'), ar9);
 })
 
@@ -91,7 +103,7 @@ res10 = ar9.some(elem => {
    return (typeof elem === 'boolean');
 });// сюда в скобки дописываете стрелочную функцию
 
-console.log(res10);
+console.log('res10', res10);
 
 // Task 11
 // C помощью bind создайте функцию t11, которая основана на функции t1 но контекст - out-11. Запустите эту функцию.

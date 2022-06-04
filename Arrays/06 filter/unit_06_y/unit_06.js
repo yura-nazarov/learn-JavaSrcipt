@@ -29,12 +29,10 @@ let a3 = [2, 3, 4, 5, -6, 55, 1, 12, -3, 7, 4, 5, 2];
 let z3 = [];
 
 const f3 = () => {
-   let indx = [];
-   z3 = a3.filter((item, index) => {
-      if (index > 4) indx.push(index);
-      return indx;
+   a3.filter((item, index) => {
+      if (item > 4) z3.push(index);
    });
-   console.log(indx);
+   console.log(z3);
 }
 
 // TASK 04
@@ -141,10 +139,10 @@ let z10 = {}; // ожидаю {"best" : 12, "quest" : -6};
 
 const f10 = (arr, funCallback) => {
    for (let key in arr) {
-      console.log('a10[key]', a10[key]);
-      if (funCallback(a10[key])) {
-         console.log('pass', a10[key]);
-         z10[key] = a10[key];
+      console.log('arr[key]', arr[key]);
+      if (funCallback(arr[key])) {
+         console.log('passed', arr[key]);
+         z10[key] = arr[key];
       }
    }
    return z10;

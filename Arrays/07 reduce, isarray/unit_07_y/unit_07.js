@@ -28,8 +28,8 @@ const f2 = () => {
 let a3 = [2, 3, 4, 5];
 
 const f3 = () => {
-   a3.reduce((accum, item, index) => {
-      console.log('accum ', accum, ' item: ', item, 'index', index);
+   a3.reduce((accum, item, index, array) => {
+      console.log('accum ', accum, ' item: ', item, 'index', index, 'array', array);
    })
 
 }
@@ -42,8 +42,8 @@ let a4 = [2, 3, 4, 5];
 
 const f4 = () => {
    console.clear();
-   a4.reduce((accum, item, index) => {
-      console.log('accum ', accum, ' item: ', item, 'index', index);
+   a4.reduce((accum, item, index, array) => {
+      console.log('accum ', accum, ' item: ', item, 'index', index, 'array', array);
       return accum;
    })
 }
@@ -79,6 +79,8 @@ const f7 = () => {
    out07.textContent = a7.reduce((accum, item, index) => {
       if (item > 0) {
          return accum + item;
+         // or
+         // accum += item;
       }
       return accum;
    }, 0)
@@ -92,18 +94,11 @@ let a8 = [-2, 3, -4, 5, -6, 7]; // результат 15
 const f8 = () => {
    out08.textContent = a8.reduce((accum, item, index) => {
       if (item > 0) {
-         return accum + item;
+         accum += item;
+         // or
+         // return accum + item;
       }
       return accum;
-
-      // or        more correct
-      // if (item > 0 && accum == 0) {
-      //    return accum = item;
-      // }
-      // if (item > 0) {
-      //    return accum + item;
-      // }
-      // return accum;
    }, 0)
 }
 
@@ -114,14 +109,11 @@ let a9 = [-2, 3, -4, 5, -6, 7]; // 105
 
 const f9 = () => {
    out09.textContent = a9.reduce((accum, item, index) => {
-      if (item > 0 && accum == 0) {
-         return accum = item;
-      }
-      if (item > 0) {
-         return accum * item;
-      }
+      if (item > 0 && accum > 0) return accum * item;
+      else if (item > 0 && accum < 0) accum = item; // если первый эл. будет отрицательным
+
       return accum;
-   }, 0)
+   })
 }
 
 // TASK 10
@@ -156,7 +148,7 @@ const f11 = () => {
 // TASK 12
 // По нажатию b-12 выполняется функция f12. Функция должна перебрать массив a12 и вывести в out-12 индекс самого большого числа в массиве. Применяем reduce.
 
-let a12 = [16, -2, 3, 14, 15, -6, 7, 3];
+let a12 = [16, -2, 3, 14, 15, -6, 73, 3];
 
 const f12 = () => {
    let max = 0;
@@ -164,9 +156,8 @@ const f12 = () => {
       if (item > max) {
          max = item;
          return index;
-      } else {
-         return accum;
       }
+      return accum;
 
       // or
       // if (item > maxVal) {
@@ -181,42 +172,34 @@ const f12 = () => {
 // TASK 13
 // По нажатию b-13 выполняется функция f13. Функция должна перебрать массив a13 и вывести в out-13 длину самого большого вложенного в a13 массива. Применяем reduce.
 
-let a13 = [[4, 4, 4, 3, 3, 3, 3], [4, 4], [4, 4, 4, 4], [4], [4, 4]];
+let a13 = [[4, 4, 4, 3, 3, 3, 3], [4, 4, 0, 0, 0, 0, 0, 0, 0, 0, 0], [4, 4, 4, 4], [4], [4, 4]];
 
 const f13 = () => {
-   let max = 0;
-   // out13.textContent = a13.reduce((accum, item, index) => {
-   //    if (item.length > max) {
-   //       accum = item.length;
-   //       max = item;
-   //       return item.length;
-   //    } else {
-   //       return accum;
-   //    }
-   // }, 0);
-   const res = a13.reduce((acc, item) => {
-      if (acc < item.length) acc = item.length;
-      return acc;
-   }, [0].length);
+   const res = a13.reduce((accum, item) => {
+      if (accum < item.length) accum = item.length;
+      return accum;
+   }, 0);
+
    document.querySelector('.out-13').textContent = res;
 }
 
 // TASK 14
 // По нажатию b-14 выполняется функция f14. Функция должна перебрать массив a14 и вывести в out-14 самый большой вложенный в a14 массив. Применяем reduce.
 
-let a14 = [[4, 4, 4, 3, 3, 3], [4, 4], [4, 4, 4, 4], [4], [4, 4]];
+let a14 = [[4, 4, 4, 3, 3, 3], [4, 4], [4, 4, 4, 4, 1, 1, 1, 1,], [4], [4, 4]];
 
 const f14 = () => {
+   let max = 0;
    out14.textContent = a14.reduce((accum, item, index) => {
-      console.log(accum.length, index);
-      if (item.length > accum.length) {
+      if (max < item.length) {
+         max = item.length;
          return item;
-      } else {
-         return accum;
       }
+      return accum;
+
       // or
       // return (item.length > accum.length) ? item : accum;
-   });
+   }, 0);
 }
 
 // TASK 15
@@ -240,16 +223,16 @@ let a16 = [
 // Ожидаю объект вида  { 45 : "Ivar", 464 : "Astor", 17 : "Bristol" }
 
 const f16 = () => {
+   out16.innerHTML = '';
+
    let res = a16.reduce((accum, item, index) => {
       accum[item.id] = item.name;
       return accum;
    }, {});
-   console.log(res);
 
    for (key in res) {
       out16.innerHTML += key + ' : ' + res[key] + '<br>';
    }
-
 }
 
 // TASK 17
@@ -260,13 +243,19 @@ let a17 = { "Lyon": "France", "Berlin": "Germany", "Paris": "France" };
 let a17_res = [];
 
 const f17 = () => {
-   for (key in a17) {
-      a17_res.push(a17[key]);
-   }
-   console.log(a17_res);
+   // for (key in a17) {
+   //    a17_res.push(a17[key]);
+   // }
+   // console.log(a17_res);
 
-   out17.innerHTML = a17_res.reduce((accum, item, index) => {
-      return accum += ' ' + item;
+   // return accum += ' ' + item;
+   // out17.innerHTML = a17_res.reduce((accum, item, index) => {
+   //    return accum += ' ' + item;
+   // });
+   // or
+
+   out17.innerHTML = Object.values(a17).reduce((accum, item, index) => {
+      return accum + ' ' + item;
    });
 }
 

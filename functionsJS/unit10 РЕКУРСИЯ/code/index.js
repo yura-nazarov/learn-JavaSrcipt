@@ -73,7 +73,7 @@ function moneyCycle() {
    }
 }
 
-moneyCycle();
+// moneyCycle();
 
 // ex 3
 
@@ -133,7 +133,9 @@ function userParentRecursion(obj) {
       }
    }
 }
-// userParentRecursion(users.kostenko); проверяем есть ли у kostenko поле perent - выводим их
+
+// проверяем есть ли у kostenko поле perent - выводим их
+// userParentRecursion(users['ivanov']);
 
 // что бы перебрать все значения у объекта users нужно это сделать в цикле
 // это нужно что бы проходить по всем объектам в записи, а не только по тем где есть поле perent
@@ -204,24 +206,33 @@ function fact2(n) {
 // ex 6
 // обход древовидного DOM
 
-// плаская коллекция всех вложенных элементов. Просто что бы посчитать их кол-во
+// // плаская коллекция (без разделения вложенности) всех вложенных элементов.
+// // Просто, что бы посчитать кол-во элементов внутри тега с классом test
 // const treeMulti = document.querySelectorAll('.test *');
-// console.log('treeMulti', treeMulti);
-// // получим элементы первого уровня. Но нам их нужно будет перебирать
-// const treeMultiFirst = document.querySelectorAll('.test>*');
-// console.log('treeMultiFirst', treeMultiFirst);
-// const treeAll = document.querySelectorAll('.test');
-// console.log('treeAll', treeAll);
+// console.log('treeMulti', treeMulti); // NodeList(7) [p, div, div, span, p, b, div]
 
-// получаем одни, целый элемент со всеми узлами. Теперь переберём его с помощью рекурсии
+// // получим элементы первого уровня. Нужно будет перебирать вложенные объекты
+// const treeMultiFirst = document.querySelectorAll('.test>*');
+// console.log('treeMultiFirst', treeMultiFirst); // NodeList(5) [p, div, div, p, div]
+
+// // получаем весь блок тега test со всеми вложениями
+// const treeAll = document.querySelectorAll('.test');
+// console.log('treeAll', treeAll); // NodeList [div.section.test]
+
+// // если получаем элемент в единственном числе querySelector,
+// // тогда получаем не NodeList, а удобный для перебора объект
+// const treeAll1 = document.querySelector('.test');
+// console.log('treeAll', treeAll1); // div.section.test
+
+// получаем один, целый элемент со всеми узлами. Теперь переберём его с помощью рекурсии
 const tree = document.querySelector('.test');
 const out12 = document.querySelector('.out12');
 // console.log('tree', tree);
 out12.textContent = '';
 function treeTravelsal(elem) {
-   console.log('elem1', elem);
+   console.log('elem', elem);
    let elemChildren = elem.children;
-   out12.textContent += elem.tagName + ' ';
+   if (elem.children !== '') out12.textContent += elem.tagName + ' ';
    console.log('elemChildren', elemChildren);
    Array.from(elemChildren).forEach(item => treeTravelsal(item));
 }

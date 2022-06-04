@@ -54,7 +54,6 @@ const f4 = () => {
 let a5 = [55, 66, 77, 88, 99, 129];
 
 const f5 = () => {
-
    return a5.shift();
 }
 
@@ -71,9 +70,10 @@ const f6 = (elem) => {
    // a6.push(elem);
    // a6.reverse()
    //or
-   a6 = a.concat(elem, ...a6);
-
+   a6 = a.concat(elem, a6);
+   console.log('a.concat(elem, a6)', a.concat(elem, a6));
    console.log(a6);
+   console.log(a);
    return a6.length;
 }
 
@@ -95,7 +95,6 @@ const f7 = () => {
 let a8 = [44, 45, 46, 47, 48, 49];
 
 const f8 = () => {
-
    console.log(a8.slice(1, 4));
 }
 
@@ -106,7 +105,6 @@ let a9 = ['A', 2, 43, 12, 13, 14, 15, 16];
 
 const f9 = () => {
    console.log(a9.slice(2));
-
 }
 
 // TASK 10

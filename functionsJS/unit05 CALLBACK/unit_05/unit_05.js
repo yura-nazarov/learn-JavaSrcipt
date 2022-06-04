@@ -2,23 +2,22 @@
 // Допишите функцию callBack1 такую, что принимает элементы массива из map и возвращает их возведенные в 3 степень.
 
 const ar1 = [4, 5, 6];
-let res1;
 
-let callBack1 = (elem) => elem ** 3;
+const callBack1 = (elem) => elem ** 3;
 // or
 // let callBack1 = (elem) => {
 //    return elem ** 3;
 // }
 
-res1 = ar1.map(callBack1);
+const res1 = ar1.map(callBack1);
 
 console.log('res1', res1);
 
 // Task 2
 // Допишите анонимную стрелочную функцию внутри map такую, что принимает элементы массива из map и возвращает их возведенные в 3 степень.
 
-let res2;
-res2 = ar1.map(elem => {
+
+const res2 = ar1.map(elem => {
    return elem ** 3;
 }); // сюда в скобки дописываете стрелочную функцию
 
@@ -29,17 +28,16 @@ console.log('res2', res2);
 // Допишите функцию callBack3 такую, что принимает элементы массива из filter и возвращет true если это число.
 
 const ar3 = [4, '5', 6];
-let res3;
-let callBack3 = (elem) => (typeof elem === 'number');
 
-res3 = ar3.filter(callBack3);
+const callBack3 = (elem) => (typeof elem === 'number');
+
+const res3 = ar3.filter(callBack3);
 
 console.log('res3', res3);
 
 // Task 4
 // Допишите анонимную стрелочную функцию внутри filter такую, что принимает элементы массива из filter и возвращает true если это число.
-let res4;
-res4 = ar3.filter(elem => {
+const res4 = ar3.filter(elem => {
    return (typeof elem === 'number');
 }); // сюда в скобки дописываете стрелочную функцию
 
@@ -50,7 +48,7 @@ console.log('res4', res4);
 
 const ar5 = ['GaLaxY', 'InFILtratoR', 'DaTaPad', 'APeX hQ'];
 let res5 = [];
-let callBack5 = (elem) => {
+const callBack5 = (elem) => {
    return res5.push(elem.toLowerCase());
 }
 
@@ -98,10 +96,10 @@ console.log('res8', res8);
 
 // const ar9 = [5, 7, false, 10, 20, 30, 60, true];
 const ar9 = ['false', 2, 3];
-let res9;
-let callBack9 = (elem) => typeof elem === 'boolean';
 
-res9 = ar9.some(callBack9);
+const callBack9 = (elem) => typeof elem === 'boolean';
+
+const res9 = ar9.some(callBack9);
 
 console.log('res9', res9);
 
@@ -109,8 +107,7 @@ console.log('res9', res9);
 // Task 10
 // Допишите анонимную стрелочную функцию внутри some такую, что принимает элементы массива ar9 из some и возвращет true если тип данных элемента boolean.
 
-let res10;
-res10 = ar9.some(elem => typeof elem === 'boolean');// сюда в скобки дописываете стрелочную функцию
+const res10 = ar9.some(elem => typeof elem === 'boolean');// сюда в скобки дописываете стрелочную функцию
 
 console.log('res10', res10);
 
